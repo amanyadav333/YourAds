@@ -1,0 +1,207 @@
+{% load static %}
+
+<style>
+  #snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 7px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 40px;
+    font-size: 18px;
+  }
+
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg_nav col-12 col-md-12 shadow fixed-top py-1">
+    <div class="container-fluid">
+        <a class="navbar-brand d-inline-block logo text-center" href="{% url 'Index' %}">
+            <img src="{% static 'img/logo/main-logo1.png' %}" class="logo-img-1" id="logo-img-1">
+            <img src="{% static 'img/logo/main-logo2.png' %}" class="logo-img-2">
+        </a>
+        <form class="d-flex justify-content-center" id="full_search">
+            <div class="d-flex justify-content-center">
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </form>
+            
+        
+        <a href="#" id="display_search" onclick="show_search()">
+            <img src="{% static 'img/logo/icon/search.png' %}">
+        </a>
+            
+        <a class="list-icon-show mr-4" href="#" onclick="openNav()">
+            <img src="{% static 'img/logo/icon/list-menu.png' %}" class="list-icon mr-1">
+        </a>
+        
+        <div id="mySidenav" class="sidenav">
+            <div class="w-100 closediv" style="margin-top: -15px;">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background:#fff;">&times;</a>
+            </div>
+            <a href="/" class="py-1">
+                <i class="fa fa-home"></i> Home
+            </a>
+            <a href="/vender" class="py-1">
+                <i class="fas fa-user"></i> Join YourAds
+            </a>
+            <a href="#" class="py-1">
+                <i class="fas fa-bell"></i> Notifications
+            </a>
+            <a href="{% url 'uprofile' %}" class="py-1">
+                <i class="fas fa-lock"></i> login
+            </a>
+            <span  style="position: absolute;right: 216px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 19px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+            <span id='setcart' style="position: absolute;right: 146px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 18px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+            <a href="/cart" class="py-1">
+                <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+            <a href="#" class="py-1">
+                <i class="fas fa-asterisk"></i> Terms & Conditions
+            </a>
+            <a href="#" class="py-1">
+                <i class="fa fa-home"></i> Cart
+            </a>
+            <a href="#" class="py-1">
+                <i class="fa fa-home"></i> Cart
+            </a>
+            
+        </div>
+        
+        
+        <div id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mt-2 mx-3 mx-auto">
+                    <a class="nav-link" href="/vender">
+                        Become Vendor
+                    </a>
+                </li>
+                <li class="nav-item mt-2 mx-2 dropdown btn mx-auto">
+                    <a class="dropdown caret-btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More <img src="static/img/logo/icon/caret.png" class="caret-icon">
+                    </a>
+
+                    <div class="dropdown-menu p-0 mt-2" id="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <span class="dropdown-menu-arrow"></span>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Action</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Another action</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                    </div>
+                </li>
+                <li class="nav-item mt-2 mx-3 mx-auto">
+                    <a class="nav-link" href="{% url 'userprofile' %}">
+                        Notifications
+                    </a>
+                </li>
+                {% if 'user' not in request.session %}
+                <li class="nav-item mt-2 mx-3">
+                    <a class="nav-link" href="#"  data-toggle="modal" data-target="#myModal">
+                        Login
+                    </a>
+                </li>
+                {% else %}
+                   
+                   <li class="nav-item mt-2 mx-3 dropdown btn">
+                        <a class="dropdown caret-btn" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{% url 'venderprofile' %}">
+                            MyAccount<img src="static/img/logo/icon/caret.png" class="caret-icon">
+                        </a>
+                        <div class="dropdown-menu p-0 mt-2" id="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <span class="dropdown-menu-arrow"></span>
+                            <a class="dropdown-item py-3 mr-5" href="{% url 'venderprofile' %}"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">My Profile</a>
+                            <div class="dropdown-divider my-0"></div>
+                            <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">My Order</a>
+                            <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Logout</a>
+                        </div>
+                    </li>
+                
+                {% endif %}
+                <span  style="position: absolute;right: 216px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 19px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+                <span id='setcart' style="position: absolute;right: 146px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 18px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link mx-2" href="/cart" class="bell-card btn btn-default" onclick="openNav()">
+                        <img src="{% static 'img/logo/Cart.png'%}" width="43px" height="43px" >
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mobile_search col-md-12 mt-2 p-0" id="mobile_search">
+        <form id="">
+            <span class="dropdown-menu-arrow1"></span>
+            <input type="text" name="" placeholder="Search..." id="hide_search">
+        </form>
+    </div>
+</nav>
+
+<!-- snackbar  -->
+<button onclick="myFunction()" style="display: none">Show Snackbar</button>
+<div id="snackbar">
+  <label id='snackbaralert' style="font-size: 17px"></label>
+</div>
+
+{% include 'login.html' %}
+<script>
+    function myFunction() {
+      var x = document.getElementById("snackbar");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+    function show_search() {
+        var disp = document.getElementById('mobile_search');
+        if (disp.style.display === "none") {
+            disp.style.display = "block";
+        } else {
+            disp.style.display = "none";
+        }
+    }
+    
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "380px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+</script>

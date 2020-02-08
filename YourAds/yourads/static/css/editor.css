@@ -1,0 +1,42 @@
+.editor-page .form-control {
+    border-radius: 0px;
+    font-size: 14px;
+    color: gray;
+}
+
+.editor-page label {
+    font-size: 12px;
+    color: darkgray;
+    font-weight: bold;
+}
+
+.editor-page label i {
+    font-size: 15px;
+    margin-right: 4px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.editor-page .form-control:focus {
+    box-shadow: 2px 2px 4px 2px #cdcdcd;
+}
+
+.editor-page .breadcrumb {
+    border-radius: 0px;
+}
+.btn_pink {
+    background: #fe1d5d;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+    border: 1px solid #fe1d5d;
+    display: flex;
+    padding: 8px 28px;
+    align-items: center;
+    justify-content: center;
+}
+.btn_pink:hover {
+    border: 1px solid #d81b60;
+    background-color: #d81b60;
+    cursor: pointer;
+}

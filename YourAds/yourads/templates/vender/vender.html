@@ -1,0 +1,298 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+        
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css"/>
+
+<style>    
+    .validptag{
+        display: none;
+        font-size: 14px;
+        color: red;
+    }
+    .slick-dots li.slick-active button:before, .slick-dots li button:before {
+        font-size: 18px;
+    }
+    .slick-dots li.slick-active button {
+        border-radius: 100%;
+        background-color: #fe1d5d;
+    }
+    .slick-dots li.slick-active button:before {
+        color: transparent;
+    }
+    
+    #user_mobile_Indicators img {
+        width: 100%;
+        height: 220px;
+    }
+    
+    #vender_mobile_fader span, a, a:hover {
+        display: inline-block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    #vender_mobile_fader p.service_text{
+      color:#cccccc !important;
+      font-size:16px;
+      line-height:28px;
+      text-align:center;    
+    }
+    #vender_mobile_fader .item {
+        background: #fff;
+        text-align: center;
+        padding: 30px 25px;
+        box-shadow:0 0px 25px rgba(0, 0, 0, 0.07);
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    #vender_mobile_fader .item:hover{
+        background:#f91942;
+        transition: 0.6s;
+    }
+    #vender_mobile_fader .item:hover h6, .item:hover p{
+        color:#fff;
+        -webkit-transition: all .5s ease 0;
+        transition: all .5s ease 0;
+        transition: all 0.5s ease 0s;
+    }
+    #vender_mobile_fader .item .icon {
+        font-size: 40px;
+        margin-bottom:25px;
+        color: #f91942;   
+        width: 90px;
+        height: 90px;
+        line-height: 96px;
+        border-radius: 50px;
+        background-color: #d9e9ff;
+        -webkit-transition: all .5s ease 0;
+        transition: all .5s ease 0;
+        transition: all 0.5s ease 0s;
+    }
+    #vender_mobile_fader .item .icon:hover {
+        border-radius: 10px;
+        -webkit-transition: all .5s ease 0;
+        transition: all .5s ease 0;
+        transition: all 0.5s ease 0s;
+    }
+    #vender_mobile_fader .item p{
+        font-size:15px;
+        line-height:26px;
+    }
+    #vender_mobile_fader .item h6 {
+        margin-bottom:20px;
+        color:#2f2f2f;
+    }
+    
+    #vender_mobile_Indicators {
+        display: none;
+    }
+    
+    #jumv_mobile {
+        display: none;
+    }
+    #vender_partners_xxx .card img {
+        height: 220px;
+        margin-bottom: 30px;
+    }
+    
+    @media (max-width: 470.98px) {
+        /* ======================================
+        1. Carousel Area
+        ====================================== */
+        #vender_mobile_Indicators {
+            display: block;
+        }
+        #vender_full_indicators {
+            display: none;
+        }
+        
+        #jumv_full {
+            display: none;
+        }
+        #jumv_mobile {
+            display: block;
+        }
+        #vender_body #vender_heading h2{
+            font-size: 23px;
+        }
+        #vender_body #vender_heading p{
+            font-size: 17px;
+        }
+        #vender_partners_xxx .card .h3 {
+            font-size: 20px;
+        }
+        #vender_partners_xxx .card img {
+            height: 280px;
+            margin-bottom: 30px;
+        }
+    }
+</style>
+
+{% include 'vender/navbar.html' %}
+
+<div>
+    <div id="vender_full_indicators" class="carousel slide" data-ride="carousel" style="margin-top: 75px;">
+        <ol class="carousel-indicators">
+            <li data-target="#vender_full_indicators" data-slide-to="0" class="active h3"></li>
+            <li data-target="#vender_full_indicators" data-slide-to="1"></li>
+            <li data-target="#vender_full_indicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{% static 'img/news/n-3.jpg' %}" style="height: 400px;">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p class="text-white">We had such a great time in LA!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{% static 'img/news/n-1.jpg' %}" style="height: 400px;">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p class="text-white">We had such a great time in LA!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{% static 'img/news/i6.jpg' %}" style="height: 400px;">
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p class="text-white">We had such a great time in LA!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="vender_mobile_Indicators" class="p-0">
+        {% include 'mobile/vender/venderHome.html' %}
+    </div>
+
+    <div class="container" id="vender_body">
+        <div class="text-center my-5" id="vender_heading">
+            <h2 class="font-weight-bold">GROW YOUR BUSSINESS WITH ADVERTISEMENT.</h2>
+            <p class="lead">Apply now to become an Ola driver-partner. Start earning in 24 hours!</p>
+        </div>
+
+        <div class="row" id="vender_partners_xxx">
+            <div class="col-md-4 my-4 px-4">
+                <div class="card shadow" style="border: 0">
+                    <img src="{% static 'img/vender/av-1.jpg' %}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <p class="h3 mb-4">Join with us as a<br><strong>Partner</strong></p>
+                        <a href="#" class="b b-ob br30 px-5" onclick="selectmodal(1,'','')">Newspaper Display</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 my-4 px-4">
+                <div class="card shadow" style="border: 0">
+                    <img src="{% static 'img/vender/av-2.jpg' %}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <p class="h3 mb-4">Join with us as a<br><strong>Partner</strong></p>
+                        <a href="#" class="b b-ob br30 px-5" onclick="selectmodal(2,'','')">Classified Text</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 my-4 px-4">
+                <div class="card shadow" style="border: 0">
+                    <img src="{% static 'img/vender/av-3.png' %}" class="card-img-top">
+                    <div class="card-body text-center">
+                        <p class="h3 mb-4">Join with us as a<br><strong>Partner</strong></p>
+                        <a href="#" class="b b-ob br30 px-5" onclick="selectmodal(3,'','')">Classified Display</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-light p-4 row my-5">
+            <div class="col-md-9">
+                <h4>Attach your Ads of Nespaper with YourAds</h4>
+                <p>Know about more ways of partnering with YourAds & how each category can help you earn more.</p>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-outline-primary mt-3 px-4">Send Enquiry</button>
+            </div>
+        </div>
+        
+        <div class="jumbotron col-12" id="jumv_full">
+            <div class="pb-4" id="vender_full_fader">
+                <div class="testimonial bg-white mx-3 text-center py-5 px-4">
+                    <figure class="mb-4">
+                        <img src="{% static 'img/vender/img/v3.jpg' %}" alt="Image" class="img-fluid mb-3 mx-auto" style="width: 80px; height: 90px; border-radius: 50%;">
+                        <p>John Smith</p>
+                    </figure>
+                    <blockquote>
+                        <p class="lead">&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                    </blockquote>
+                </div>
+
+                <div class="testimonial bg-white mx-3 text-center py-5 px-4">
+                    <figure class="mb-4">
+                        <img src="{% static 'img/vender/img/v3.jpg' %}" alt="Image" class="img-fluid mb-3 mx-auto" style="width: 80px; height: 90px; border-radius: 50%;">
+                        <p>John Smith</p>
+                    </figure>
+                    <blockquote>
+                        <p class="lead">&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                    </blockquote>
+                </div>
+
+                <div class="testimonial bg-white mx-3 text-center py-5 px-4">
+                    <figure class="mb-4">
+                        <img src="{% static 'img/vender/img/v3.jpg' %}" alt="Image" class="img-fluid mb-3 mx-auto" style="width: 80px; height: 90px; border-radius: 50%;">
+                        <p>John Smith</p>
+                    </figure>
+                    <blockquote>
+                        <p class="lead">&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi earum unde iusto.&rdquo;</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="jumv_mobile" class="">
+        {% include 'mobile/vender/slickVender.html' %}
+    </div>
+
+    <!-- login model -->
+    {% include '../login.html' %}
+
+    <!-- newspaper model -->
+    {% include 'vender/newspaper.html' %}
+
+    <div id="full_footer">
+        {% include 'footer.html' %}
+    </div>
+
+    <div id="mobile_footer">
+        {% include 'mobile/mobileFooter.html' %}
+    </div>
+    
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
+
+<script type="text/javascript">
+    $('#vender_full_fader').slick({
+        dots: true,
+        infinite: true,
+        speed: 700,
+        autoplay:true,
+        autoplaySpeed: 2000,
+        slidesToShow: 2,
+        slidesToScroll: 1
+    });
+    
+    $('#vender_mobile_fader').slick({
+        dots: true,
+        infinite: true,
+        speed: 900,
+        autoplay:true,
+        autoplaySpeed: 3000,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+</script>
+
+{% endblock %}

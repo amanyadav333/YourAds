@@ -1,0 +1,290 @@
+{% load static %}
+
+<style>
+    .modal-body label {
+        font-size: 12px;
+        font-weight: bold;
+        color: grey;
+    }
+
+    .modal-body i {
+        font-size: 15px;
+        color: #007bff;
+    }
+    
+    .modal-body input {
+        font-size: 13px;
+        color: grey;
+    }    
+    .modal-body input:focus {
+        box-shadow: 0px 0px 0px 0px silver;
+    }
+    
+    .modal-body select {
+        font-size: 13px;
+        color: grey;
+    }    
+    .modal-body select:focus {
+        box-shadow: 0px 0px 0px 0px silver;
+    }
+    .validptag{
+        display: none;
+        font-size: 14px;
+        margin-left: 10px;
+        color: red;
+    }
+</style>
+
+<!-- newspaper SECTION -->
+        <!-- Modal -->
+        <button id="modalbutton" style="display: none" data-toggle="modal" data-target="#exampleModalVender">ok</button>
+        <div class="modal fade" id="exampleModalVender" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                            <div id="venderdisplaymodal" class="vender-test">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <img src="{% static 'img/news/nl-1.png' %}" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row my-3">
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-building"></i> Select City: </label>
+                                            <select id='displaycity' class="form-control" name="display-city" required="required">
+                                                <option selected="true" disabled="disabled" value="">Select City</option>
+                                                {% for i,j in city.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <p class="validptag">Error</p>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-newspaper"></i> Newspaper Name: </label>
+                                            <select id='displaynpname' class="form-control" name="display-newspaper" required="required">
+                                                <option selected="true" disabled="disabled" value="">Select Newspaper</option>
+                                                {% for i,j in newspapername.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <p class="validptag">Error</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-4" id="addvenderdisplayblock">
+                                        <div class="col-md-6">
+                                            <label><i class="fas fa-dollar-sign"></i> Enter Supplements: </label>
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Enter Page Name" id="displaypage" class="form-control" required="required">
+                                                <p class="validptag">Error</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label><i class="fas fa-dollar-sign"></i> Price: </label>
+                                            <div class="row" style="margin-left: 0px;">
+                                                <input type="number" placeholder="Enter Price" id="displayprice" class="form-control col-md-9" required="required">
+                                                <button class="btn ml-1 btn-sm qnt" id="qnt" onclick="addvenderdisplay(this)">Add</button>
+                                                <p class="validptag">Error</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="b b-ob br30 ml-auto mr-3" id="vclear" onclick="deletevdisp()" style="padding-top: 3px; padding-bottom: 4px; display: none;">
+                                            clear</button>
+
+                                    <div class="text-center text-muted">
+                                        <p class="validptag" id="validptag2"></p>
+                                        <p style="font-size: 12px">Note:- Enter price according to 10 x 10 cm Size & Page Wise</p>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row px-4 my-3 hover-buttons">
+                                        <button type="button" onclick="venderdisplaybook(this)" class="col-md-5 col-5 mx-2 orange-button py-2">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                    
+
+                            <div class="vender-test" id="vendertextmodel" style="display: none">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <img src="{% static 'img/news/nl-2.png' %}" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row my-3">
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-building"></i> Select City: </label>
+                                            <select name="state" id="textcity" class="form-control" name="display-city">
+                                                <option selected="true" disabled="disabled" value="">select city</option>
+                                                {% for i,j in city.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <p class="validptag">Error</p>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-newspaper"></i> Newspaper Name: </label>
+                                            <select id="textnpname" class="form-control" name="display-newspaper">
+                                                <option selected="true" disabled="disabled" value="">newspaper name</option>
+                                                {% for i,j in newspapername.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <p class="validptag">Error</p>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row mt-2" id="addvenderclasstextblock">
+                                        <div class="dropdown col-md-6">
+                                            <div class="form-group">
+                                                <label><i class="fas fa-dollar-sign"></i> Color code: </label>
+                                                <input id="colorcode" placeholder="#a1effe" type="text"  name="text-color" class="form-control">
+                                                <p class="validptag">Error</p>
+                                            </div>
+
+                                            <div class="dropdown-menu ml-3" aria-labelledby="dropdownMenuButton">
+                                                <div class="row color-div mt-2 mx-auto" style="width: 300px;" id="color-div">
+                                                    <div class="mx-auto" onclick="colorset('#fff301')" style="background: #fff301;"></div>
+                                                    <div class="mx-auto" onclick="colorset('#fadeec')" style="background: #fadeec;"></div>
+                                                    <div class="mx-auto" style="background: #fbf69a;" onclick="colorset('#fbf69a')"></div>
+                                                    <div class="mx-auto" style="background: #99ccff;" onclick="colorset('#99ccff')"></div>
+                                                    <div class="mx-auto" style="background: #dae9da;" onclick="colorset('#dae9da')"></div>
+                                                    <div class="mx-auto" style="background: #ffffff;border: 1px solid grey" onclick="colorset('#ffffff')"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label><i class="fas fa-dollar-sign"></i> Price: </label>
+                                            <div class="row" style="margin-left: 0px;">
+                                                <input type="number" id="colorprice" placeholder="enter price" class="form-control col-md-9">
+                                                <button class="btn ml-1 btn-sm qnt" id="qnt" onclick="addvenderclasstext(this)">Add</button>
+                                                <p class="validptag">Error</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="b b-ob br30 ml-auto mr-3" id="vclear2" onclick="deletevclasstext()" style="padding-top: 3px; padding-bottom: 4px; display: none;">
+                                            clear</button>
+                                    <div class="text-center text-muted">
+                                        <p class="validptag" id="validptag3"></p>
+                                        <p style="font-size: 12px">Note:- Enter price according to 10 x 10 cm Size & Color Wise</p>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row px-4 my-3 hover-buttons">
+                                        <button type="button" onclick="venderclassitextbook(this)" class="col-md-5 col-5 mx-2 orange-button py-2">
+                                            Submit
+                                        </button>
+                                    </div>
+                             </div>
+                            </div>
+                        
+
+                            <div class="vender-test" id="venderdisplay2modal" style="display: none">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <img src="{% static 'img/news/nl-3.png' %}" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row my-3">
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-building"></i> Select City: </label>
+                                            <select id='classdisplaycity' class="form-control" name="display-city">
+                                                <option selected="true" disabled="disabled" value="">select city</option>
+                                                {% for i,j in city.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <p class="validptag">Error</p>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-newspaper"></i> Newspaper Name: </label>
+                                            <select id='classdisplaynpname' class="form-control" name="display-newspaper">
+                                                <option selected="true" disabled="disabled" value="">newspaper name</option>
+                                                {% for i,j in newspapername.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <p class="validptag">Error</p>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row mt-2" id="addvenderclasstextblock">
+                                        <div class="dropdown col-md-3" >
+                                            <label class="mt-2"><i class="fas fa-dollar-sign"></i> Ads Size: </label>
+                                        </div>
+                                        <div>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label" for="radio1">
+                                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="SingleSize" checked>Single Block:
+                                                </label>
+                                                <img class="ml-2" src="{% static 'img/news/single_block.png' %}" style="width: 30px;height: 40px">
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <label class="form-check-label" for="radio2">
+                                                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="DoubleSize">Double Block
+                                                </label>
+                                                 <img class="ml-2" src="{% static 'img/news/double_block.png' %}" style="width: 60px;height: 40px">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6">
+                                            <label><i class="far fa-newspaper"></i> Black/White Price: </label><br>
+                                            <div class="form-group">
+                                                <input type="text" id="blackprice" placeholder="enter price" class="form-control">
+                                                <p class="validptag">Error</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label><i class="fas fa-dollar-sign"></i> Color Price: </label>
+                                            <div class="form-group">
+                                                <input type="text" id="whiteprice" placeholder="enter price" class="form-control">
+                                                <p class="validptag">Error</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center text-muted">
+                                        <p style="font-size: 12px">Note:- Enter price according to Ads Size & bw/color Desgine</p>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row px-4 my-3 hover-buttons">
+                                        <button type="button" onclick="venderclassidisplay(this)" class="col-md-5 col-5 mx-2 orange-button py-2" style="border-radius: 0px">
+                                            Save
+                                        </button>
+                                    </div>
+                             </div>
+                           </div>
+                    </div>
+                </div>
+            </div>
+        </div>

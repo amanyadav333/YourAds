@@ -1,0 +1,415 @@
+{% load static %}
+
+<style>
+    .hover-buttons .blue-button {
+        background-color: #0077b5;
+        color: #fff;
+        border: 1px solid #0077b5;
+        border-radius: 0px;
+    }
+
+    .hover-buttons .blue-button:hover {
+        background-color: #fff;
+        color: #0077b5;
+    }
+
+    .hover-buttons .orange-button {
+        background-color: #fff;
+        color: #FF8A4F;
+        border: 1px solid #FF8A4F;
+        border-radius: 0px;
+    }
+
+    .hover-buttons .orange-button:hover {
+        background-color: #FF8A4F;
+        color: #fff;
+    }
+
+    .hover-buttons button {
+        border-radius: 0px;
+        transition: 0.8s;
+    }
+</style>
+
+<!-- Map SECTION -->
+    <section id="team" class="team-wrapper" style="border: 1px solid red">
+        <div style="text-align: center;border: 1px solid red">
+
+            <div class="title text-center">
+                <h2>Advertisement Map Activity</h2>
+                <p>ETIAM DIGNISSIM LEO VESTIBULUM VOLUTPAT MORB</p>
+                <hr>
+            </div>
+            
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>    
+            
+            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    <div class="item" onclick="gethordingposition('Hording Ads')">
+                        <div class="pad15">
+                            <img src="{% static 'img/adwords.png'%}"  style="width: 23%">
+                            <p>All</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                         <div class="dropdown pad15">
+                            <img onmouseover="fadeimageIn(1)" onmouseout="fadeimageout()" src="{% static 'img/bill1.png'%}" onclick="typemarkershow(1)" style="width: 23%">
+                            <p>Hording</p>
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div class="pad15">
+                             <img onmouseover="fadeimageIn(2)" onmouseout="fadeimageout()" src="{% static 'img/terminal.png'%}" onclick="typemarkershow(3)" style="width: 23%">
+                             <p>Ganetry Gate</p>
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div class="pad15">
+                             <img onmouseover="fadeimageIn(3)" onmouseout="fadeimageout()" src="{% static 'img/bus-stop.png'%}" onclick="typemarkershow(2)" style="width: 23%">
+                             <p>bus Stop</p>
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div class="pad15 dropdown">
+                             <img onmouseover="fadeimageIn(4)" onmouseout="fadeimageout()" src="{% static 'img/advertising%20(1).png'%}" onclick="typemarkershow(4)" style="width: 23%" id="dropdownMenuButton" data-toggle="dropdown">
+
+                             <p>Road Ads</p>
+                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                              </div>
+
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div  class="dropdown pad15">
+                             <img onmouseover="fadeimageIn(5)" onmouseout="fadeimageout()" src="{% static 'img/monitor%20(2).png'%}" onclick="typemarkershow(5)" style="width: 23%"  id="dropdownMenuButton2" data-toggle="dropdown">
+                             <p>Digital Ads</p>
+                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div class="dropdown pad15" style="text-align: center">
+                             <img  onmouseover="fadeimageIn(7)" onmouseout="fadeimageout()" src="{% static 'img/cargo-truck%20(1).png'%}" onclick="typemarkershow(6)" style="width: 23%"  id="dropdownMenuButton3" data-toggle="dropdown">
+                             <p>Vehicle Ads</p>
+                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div class="pad15">
+                             <img onmouseover="fadeimageIn(8)" onmouseout="fadeimageout()" src="{% static 'img/shirt%20(1).png'%}" onclick="typemarkershow(7)" style="width: 23%">
+                             <p>People Ads</p>
+                         </div>
+                    </div>
+                    <div class="item">
+                         <div class="pad15 dropdown" >
+                             <img onmouseover="fadeimageIn(9)" onmouseout="fadeimageout()" src="{% static 'img/advertising%20(2).png'%}" onclick="typemarkershow(8)" style="width: 23%"  id="dropdownMenuButton4" data-toggle="dropdown">
+                             <p>Sky Ads</p>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                              </div>
+                         </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary leftLst ">&#60</button>
+                <button class="btn btn-primary rightLst">&#62</button>
+            </div>
+
+            <div style="width: 700px;height: 320px;display: inline-block;border: 1px solid red" id="fadeimage">
+                <img style="width: 100%;height: 100%;border-radius: 10px;padding-bottom: 20px" src="images/a.jpg" id="fimage">
+            </div><br><br>
+            
+           
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <div id="map" style="width: 98%;height: 450px;border: 1px solid red;margin-left: 15px"></div><br><br>
+            <button  data-toggle="modal" data-target="#markerModal" style="display: block">hiiii</button>
+            
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" id="markermodal" data-toggle="modal" data-target="#myModal">
+                Open modal
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Heading</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="px-2">
+                                <div class="vender-test">                          
+                                    <div class="row mb-2 border-bottom">
+                                        <div class="col-md-6">
+                                            <form id="formfilehord" enctype="multipart/form-data" method="post" name="fileinfo">
+                                                {% csrf_token %}
+                                                <label id="modallabel" class="float-left"><i class="far fa-building"></i> Upload image: 
+                                                </label>
+                                                <input type="file" class="form-control" id='vhfile' name="file[]" multiple style="font-size: 10px;">
+                                            </form>
+                                            <label style="color: red;font-size: 12px;">Min: 1 or Require: 3 file uploaded</label>
+                                        </div>
+                                        
+                                        <div class="col-md-6" style="margin-top: -1px;">
+                                            <label id="modallabel" class="float-left"><i class="far fa-building"></i> Present booking:  
+                                                <span style="font-size: 15px; font-weight: normal;">
+                                                    <input type="radio" name="pbook" onclick="$('#vhdate').css('display','none')" style="width: 10px;height: 10px;" >Yes 
+                                                    <input type="radio" name="pbook" onclick="$('#vhdate').css('display','block')" style="width: 10px;height: 10px;">No
+                                                </span>
+                                            </label>
+                                            <input id="vhdate" type="date" class="form-control file">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-2 border-bottom pb-2">
+                                        <div class="col-md-6">
+                                            <label id="modallabel" class="float-left"><i class="far fa-building"></i> Hording type: 
+                                            </label>
+                                            <select id="hordtype" name="hordtype" class="form-control" style="border-radius: 0px;" onchange="HordingTypeFeilds(this)">
+                                                <option>select Hording</option>
+                                                {% for i,j in hording.items %}
+                                                     <option value='{{ i }}' >{{ j }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                            
+                                        <div class="col-md-6" style="display: none" id="otherhordingtypeblock">
+                                            <label  class="float-left"><i class="far fa-building" style="padding-right: 5px"></i><span id="otherhordingtypelabel">Digital add type:</span>  
+                                            </label>
+                                            <select id="otherhordingtypeselecttag" name="screentype" class="form-control" style="border-radius: 0px;" onchange="showHordingTypeFeilds(this)">
+                                            </select>
+                                        </div>
+                                    </div>
+                          
+                                    <div class="row mx-auto mb-2" style="border: 1px solid red;width: 70%;height: 150px;">
+                                        <img class="img-fluid">
+                                    </div>
+                                    
+                                    <hr>
+                                    
+                                    <div id="vehiclenameblock" style="display: none">
+                                        <div class="row px-3 mb-2 border-bottom pb-2" >
+                                            <label style="font-size: 18px;margin-top: 13px;font-weight: normal;color: black">Vehicle name: </label>
+                                            <input type="text" id="vhvehiclename" name="vehiclename" placeholder="Enter Vehicle name" class="form-control col-md-5 ml-2 mt-2" style="border-radius: 0px; border: 1px solid grey;">
+                                        </div>
+                                    </div>  
+                                    
+                                    <div id="nodivideradsblock" style="display: none">
+                                        <div class="row px-3 mb-2 border-bottom pb-2">
+                                            <label style="font-size: 18px;margin-top: 13px;font-weight: normal;color: black">No. of Driver Ads: </label>
+                                            <input type="number" min="0" id="vhnopoles" name="nopoles" placeholder="Enter width" class="form-control col-md-5 ml-2 mt-2" style="border-radius: 0px; border: 1px solid grey;">
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div id="areablock" style="display: none">
+                                        <div class="row px-3 mb-2 border-bottom pb-2" >
+                                            <label style="font-size: 18px;margin-top: 13px;font-weight: normal;color: black">Area: </label>
+                                            <input type="number" id="vhwidth" placeholder="Enter width" class="form-control col-md-5 ml-2 mt-2" style="border-radius: 0px; border: 1px solid grey;">
+
+                                            <input type="number" id="vhheight" placeholder="Enter height" class="form-control col-md-5 ml-2 mt-2" style="border-radius: 0px; border: 1px solid grey;">
+                                        </div>
+                                    </div>
+                                                                        
+                                    
+                                    <div id="priceblock" style="display: none">
+                                         <div class="row px-3 mb-2 border-bottom pb-2" >
+                                            <label style="font-size: 18px;margin-top: 13px;font-weight: normal;color: black">Price: </label>
+                                            <input type="number" id="vhprice" placeholder="Enter Price" class="form-control col-md-4 ml-2 mt-2" style="border-radius: 0px; border: 1px solid grey;">
+
+                                            <div class="col-md-6" style="margin-top: 13px;">
+                                                <label style="color: red;font-size: 12px;">10 sec video price</label>
+                                            </div>
+                                         </div>
+                                    </div>  
+                                    
+                          
+                                    <div class="row px-4 my-3 hover-buttons">
+                                        <button type="button" onclick="venderhordingsaved()" class="col-md-5 col-5 mx-2 orange-button py-2" style="border-radius: 0px">
+                                            Submit
+                                        </button>
+
+                                        <button onclick="delmarker()" class="col-md-6 col-6 blue-button py-2">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="gethordingposition('BusStop Ads')">papoo</button>
+
+            <!-- Modal marker -->
+            <div class="modal fade" id="markerModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div id="marker">
+                            <div class="title text-center">
+                                <h2>Advertisement Detail</h2>
+                                <hr>
+                            </div>
+                            <div style="width: 100%;text-align: center">
+                                <div class="alert alert-danger" style="display: none" id='markerdiverror'>
+                                    <strong>Error!</strong><span id='markererror'></span>
+                                </div>
+                            </div>
+
+                            <form id="formfilehord">
+                                <div class="form-group" style="width: 100%;">
+                                    <input type="submit" style="display: none" id="formsubmit">
+                                    <label for="email" style="float: left;font-size: 18px;padding-top: 5px;margin-left: 10px">Upload Image:</label>
+                                    <div class="form-group" style="width: 50%;margin-left: 150px;">
+                                        <div class="col-sm-9">
+                                            <span class="btn btn-default btn-file">
+                                                <input  name="input2[]" type="file" accept="image/*" id="filevalue" class="file" multiple data-show-upload="true" data-show-caption="true">
+                                            </span>
+                                        </div>
+                                    </div><br><br>
+                                    <label style="color: red;font-size: 12px;">Min: 1 or Require: 3 file uploaded</label>
+                                </div>
+                            </form>
+                            <div id="addboxf" style="margin-left: 10px"></div>
+
+                            <form id="formhord">
+                                <div>
+                                    <div class="form-group">
+                                        <label style="font-size: 18px;margin-left: 8px;margin-top: 10px" >Present Booking :</label>
+                                        <input type="radio" name="radio" checked="checked" onclick="radioyes(1)">Yes
+                                        <input type="radio" name="radio" id='radiono' onclick="radioyes(2)">No
+                                        <input type="date" class="form-control inputform" id="bookdate" placeholder="Booking Date" name="bookdate" style="width: 200px;margin-top: 10px;float: right;margin-right: 150px">
+                                        <div>
+                                            <label id="modallabel" style="font-size: 18px;margin-top: 20px;margin-left: 15px;float: left">Hording Type:</label>
+                                            <select id="hordtype" name="hordtype" style="margin-left: 10px;float: left;margin-top: 20px" onchange="selectimage(value)">
+                                                <option id="optionhord" value="12">select</option>
+                                                {% for ct in hordingtype %}
+                                                <option  value="{{ ct.id }}">{{ ct.hording_type }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div><br>
+
+                                    <div style="width: 60%;height: 150px;border: 1px solid red;margin-top: 10px;margin-left: 120px;" id="blocktype">
+                                        <img src="images/adwords.png" style="width: 100%;height: 100%;" id="typeimage">
+                                    </div>
+
+                                    <div class="form-group" id="screentype" style="">
+                                        <label id="modallabel" style="font-size: 18px;margin-top: 16px;margin-left: 12px;float: left">Digital AdsType:</label>
+                                        <select id="screentype" name="screentype" style="margin-left: 10px;float: left;margin-top: 20px" onchange="screenshow(value)">
+                                            <option value="1">Theatre Screen</option>
+                                            <option value="2">Railway Screen</option>
+                                            <option value="3">Digital Vehicle</option>
+                                        </select><br><br>
+                                    </div>
+
+                                    <div class="form-group" id="vehicletype" style="">
+                                        <label id="modallabel" style="font-size: 18px;margin-top: 16px;margin-left: 12px;float: left">Vehicle Ads Type:</label>
+                                        <select id="vehicletype" name="vehicletype" style="margin-left: 10px;float: left;margin-top: 20px" onchange="vehicleshow(value)">
+                                            <option value="1">Vehicle Poster</option>
+                                            <option value="2">Full Vehicle</option>
+                                            <option value="3">Digital Vehicle</option>
+                                        </select><br><br>
+                                    </div>
+
+                                    <div class="form-group" id="roadtype" style="">
+                                        <label id="modallabel" style="font-size: 18px;margin-top: 16px;margin-left: 12px;float: left">Road Ads Type:</label>
+                                        <select id="roadtype" name="roadtype" style="margin-left: 10px;float: left;margin-top: 20px" onchange="roadshow(value)">
+                                            <option value="1">DividerLightPole Ads</option>
+                                            <option value="2">sideLightPole Ads</option>
+                                            <option value="3">Divider Ads</option>
+                                            <option value="4">SidePole Ads</option>
+                                        </select><br><br>
+                                    </div>
+
+                                    <div class="form-group" id="balloontype" style="">
+                                        <label id="modallabel" style="font-size: 18px;margin-top: 16px;margin-left: 12px;float: left">Balloon Ads Type:</label>
+                                        <select id="balloontype" name="balloontype" style="margin-left: 10px;float: left;margin-top: 20px" onchange="vehicleshow(value)">
+                                            <option value="1">Circle Balloon</option>
+                                            <option value="2">Aeroplane Balloon</option>
+                                        </select><br><br>
+                                    </div>
+
+                                    <div class="form-group" id="vehiclebox" style="width: 100%;margin-top: 20px;" >
+                                        <label style="float: left;font-size: 20px;p	adding-top: 5px;margin-left: 10px;margin-top: 10px">Vehicle Name:</label>
+                                        <input type="text" class="form-control inputform" id="vehiclename" placeholder="Enter Name" name="vehiclename" style="float: left; width: 200px;margin-left: 10px;margin-top: 10px" >
+                                        <br><br>
+                                    </div>
+
+                                    <div class="form-group" style="width: 100%;margin-top: 10px" id="areabox" >
+                                        <label for="email" style="float: left;font-size: 20px;padding-top: 5px;margin-left: 10px;margin-top: 10px">Area:</label>
+                                        <input name="width" class="form-control inputform" id="width" placeholder="Enter Widht" style="float: left; width: 230px;margin-left: 10px;margin-top: 10px" >
+                                        <input name="height" class="form-control inputform" id="height" placeholder="Enter Height" style="float: left; width: 230px;margin-left: 10px;margin-top: 10px"><br><br>
+                                    </div>
+
+                                    <div class="form-group" id="lightbox" style="width: 100%;margin-top: 20px;" >
+                                        <label style="float: left;font-size: 20px;padding-top: 5px;margin-left: 10px;margin-top: 10px">No of DividerAds:</label>
+                                        <input type="number" class="form-control inputform" min="0" id="nopoles" placeholder="Enter" name="nopoles" style="float: left; width: 82px;margin-left: 10px;margin-top: 10px" >
+                                        <br><br>
+                                    </div>
+
+
+                                    <div class="form-group" style="width: 100%;margin-top: 10px;height: 50px;text-align: center" id="pricebox" >
+                                        <label for="email" style="float: left;font-size: 17px;padding-top: 5px;margin-left: 10px;margin-top: 10px">Quality & Price:</label>
+                                        <select id="quality" style="margin-left: 10px;width: 100px;height: 33px;float: left;margin-top: 10px" onchange="gateshow(value)">
+                                            <option value="2">Gold</option>
+                                            <option value="3">Silver</option>
+                                            <option value="1">Simple</option>
+                                        </select>
+                                        <input  class="form-control inputform" value='' id="price" placeholder="Enter price" style="float: left; width: 160px;margin-left: 10px;margin-top: 10px">
+                                        <a onclick="Addbox5()" class="btn-info" style="float: left;background-color: #F7c221;border-radius: 10px;font-size: 18px;padding: 8px;margin-top: 5px;margin-left: 10px">Add File</a>
+                                    </div>
+                                    <div id="addbox5" style="margin-left: 10px"></div>
+
+
+
+                                    <div class="form-group" style="width: 100%;margin-top: 10px;" id="pricebox3" >
+                                        <label for="email" style="float: left;font-size: 20px;padding-top: 5px;margin-left: 10px;margin-top: 10px">Total Price:</label>
+                                        <input class="form-control inputform" id="totalprice" value='' placeholder="Enter price" name="totalprice" style="float: left; width: 200px;margin-left: 10px;margin-top: 10px"><br><br>
+                                    </div>
+
+
+                                    <div class="form-group" style="width: 100%;margin-top: 10px;" id="pricebox2" >
+                                        <label for="email" style="float: left;font-size: 20px;padding-top: 5px;margin-left: 10px;margin-top: 10px">Price:</label>
+                                        <input  class="form-control inputform" value='' id="screenprice" placeholder="Enter 10 sec price" name="screenprice" style="float: left; width: 200px;margin-left: 10px;margin-top: 10px">
+                                        <label style="color: red;font-size: 12px;padding-top: 17px;margin-left: 10px">10 Second video Price set</label><br><br>
+                                    </div>
+
+                                    <input type="submit" id="submitform" style="display: none">
+                                </div>
+                            </form>
+                            <div class="input-group" style="margin-top: 10px">
+                                <button onclick="savemarker()" class="btn-info"  id="modalbtn" style="background-color: #2874F0;margin-left: 100px">Save</button>
+                                <button  onclick="delmarker()" class="btn-info" data-dismiss="modal" id="modalbtn" style="background-color: #F48024">
+								Delete</button>
+                                <button data-dismiss="modal" id="modalbtn2" style="display: none"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="title">
+                    <h2>Got Some Great IDEAS to Start With ?</h2>
+                    <p>Let's get together and start building those ideas...</p>
+                </div>
+            </div>
+        </div>
+    </section>

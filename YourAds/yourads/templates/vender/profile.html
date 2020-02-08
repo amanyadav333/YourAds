@@ -1,0 +1,955 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<style>
+    .form-control {
+        border-radius: 0px;
+    }
+    .form-control:focus {
+        box-shadow: 0px 0px 1px 0px silver;
+    }
+
+    .profile-header-left img {
+        border: 1px solid #f0f0f0;
+        border-radius: 50%;
+        padding: 5px;
+        width: 48px;
+    }
+
+    .profile-header-left span {
+        font-size: 12px;
+    }
+    .profile-header-left {
+        border-radius: 0px;
+        padding: 12px;
+        border: 0px;
+    }
+    .profile-section-left {
+        border: 0px;
+        border-radius: 0px;
+    }
+
+    .profile-section-left .nav-link {
+        border-top: 1px solid #f0f0f0;
+        font-size: 15px;
+        padding: 16px;
+        font-weight: normal;
+        color: gray;
+    }
+
+    .profile-section-left .nav-link img {
+        width: 20px;
+        margin-right: 10px;
+        margin-bottom: 4px;
+    }
+
+    .hv:hover {
+        color: #2874f2;
+    }
+
+    .profile-section-left a .arrow-icn {
+        color: grey;
+        font-size: 16px;
+        margin-top: 3px;
+        float: right;
+    }
+
+    .profile-account li {
+        list-style: none;
+        margin-left: 30px;
+        background-color: aqua;
+        text-align: center;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+
+    .pa {
+        padding-left: 70px;
+        padding-top: 14px;
+        padding-bottom: 8px;
+        color: gray;
+        transition: 0.1s;
+    }
+
+    .pa:hover {
+        color: #2874f2;
+        text-decoration: none;
+        background-color: #f5faff;
+    }
+
+    .pa h6 {
+        font-size: 14px;
+    }
+
+    .color-g {
+        background-color: #f5faff;
+    }
+
+    .order-block {
+        border-radius: 0px;
+        padding: 22px;
+        border: 0px;
+    }
+
+    .order-block .card {
+        border: 1px solid #ddd;
+        border-radius: 0px;
+        margin-top: 30px;
+        padding: 10px;
+    }
+    .order-block .card:hover {
+        text-decoration: none;
+        box-shadow: 3px 3px 7px 0px silver;
+    }
+
+    .order-block .card p {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .order-block .card p {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .profile-block {
+        padding: 35px;
+    }
+
+    .profile-block .form-control {
+        background: #fafafa;
+        padding: 10px 18px;
+    }
+
+    .stuff-block {
+        border-radius: 0px;
+        border: 0px;
+    }
+
+    .stuff-list a:hover {
+        text-decoration: none;
+        /*box-shadow: 1.5px 1.5px 5px 0px silver;*/
+        transition: 0.2s;
+        background-color: #f0f0f0;
+    }
+
+    .stuff-list a {
+        color: gray;
+        border-top: 1px solid #f0f0f0;
+        padding: 22px 13px;
+    }
+
+    .stuff-list a h5 {
+        color: #14171c;
+    }
+
+    .stuff-list a p {
+        font-size: 12px;
+    }
+
+    .deactivate-block {
+        border-radius: 0px;
+        border: 0px;
+        height: 400px;
+    }
+    .vender-block {
+        border-radius: 0px;
+        border: 0px;
+    }
+
+    #v-img {
+        margin-top: 30px;
+        width: 88%;
+    }
+
+    #v-body h5 {
+        font-size: 18px;
+    }
+    .vender-hover:hover {
+        box-shadow: 5px 5px 10px 2px #ddd;
+    }
+    /* ======================== Seller BLock ==============================*/
+    .seller-block textarea {
+        height: 150px;
+        font-size: 13px;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    .seller-block input {
+        height: 30px;
+        font-size: 13px;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    .seller-block p {
+        color: gray;
+        font-size: 14px;
+    }
+
+    #business_details input {
+        border-right: 0px;
+    }
+    #business_details input:focus {
+        box-shadow: 0px 0px 0px 0px #fff;
+    }
+
+    #business_details #verify {
+        border-radius: 0px;
+        border-left: 0px;
+        border: 1px solid #ddd;
+        height: 30px;
+    }
+
+    .details_bottom h6 {
+        font-size: 14px;
+        color: dimgray;
+    }
+    .details_bottom p {
+        font-size: 13px;
+        color: gray;
+    }
+    .details_bottom input {
+        font-size: 13px;
+        height: 30px;
+    }
+    #bank_details p {
+        font-size: 12px;
+        color: gray;
+    }
+    .validpspantag{
+        font-size: 14px;
+        color: red;
+        display: none;
+        margin-left: 10px;
+    }
+
+    .modal-content {
+        box-shadow: 0px 0px 0px 0px;
+        border-radius: 0px;
+        margin: 0;
+    }
+    .b {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0px;
+        cursor: pointer;
+        height: 40px;
+        margin-top: 30px;
+        transition: 0.6s;
+    }
+    .b:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .b-tp {
+        background-color: #fe1d5d;
+        border: 1px solid #fe1d5d;
+        color: #fff;
+    }
+    .b-tp:hover {
+        background-color: transparent;
+        color: #fe1d5d;
+    }
+
+    .b-tb {
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        color: #fff;
+    }
+    .b-tb:hover {
+        background-color: transparent;
+        color: #007bff;
+    }
+    #modal_bottom{
+      top: calc(100% - 90px);
+      min-width: 100%;
+      margin: 0px;
+      margin-left: 8px;
+    }
+    /*.modal-backdrop.show {
+        opacity: 0.1;
+    }*/
+</style>
+
+{% include 'vender/navbar.html' %}
+{% include 'vender/newspaper.html' %}
+
+<div class="bg-light">
+    <div class="col-md-11 mx-auto" style="margin-top: 80px;">
+        <div class="row" style="padding-top: 20px;">
+            <div style="width: 25.5%;" class=" mr-auto">
+                <div class="card profile-header-left shadow">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="{% static 'img/profile/user-top.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <span>Hello, Ankit</span>
+                            <h6>Ankit Jain</h6>
+                        </div>
+                    </div>
+                    <hr class="mx-0 my-2">
+                    <div class="pl-2">
+                        <p class="m-0" style="font-size: 14px"><i class="fa fa-user mr-2 text-primary"></i>Please complete your profile</p>
+                        <div class="progress m-0" style="width:90%;height:7px">
+                            <div class="progress-bar" style="width:30%;height:7px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card profile-section-left mt-3 bg-white shadow">
+                    <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link profile-account text-muted">
+                            <img src="{% static 'img/profile/profile.png' %}"> Account Settings
+
+                            <a class="pa color-g active" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profile" aria-selected="false" onclick="profilenavlist(this)"><h6>Profile Information</h6></a>
+                            <a class="pa" id="profile-tab2" data-toggle="pill" href="#profile2" role="tab" aria-controls="profile" aria-selected="false" onclick="profilenavlist(this)"><h6>Other Information</h6></a>
+                            <a class="pa" id="profile-tab3" data-toggle="pill" href="#account" role="tab" aria-controls="profile" aria-selected="false" onclick="profilenavlist(this)"><h6>Account Information</h6></a>
+                        </a>
+                        <a class="nav-link text-muted">
+                            <img src="{% static 'img/profile/stuff.png' %}"> My Stuff <i class="fa fa-chevron-right arrow-icn"></i>
+                            <a class="pa" id="profile-tab4" data-toggle="pill" href="#attachnwp" role="tab" aria-controls="profile" aria-selected="false" onclick="profilenavlist(this)"><h6>Attach Newspaper</h6></a>
+                            <a class="pa" id="myListing-tab" data-toggle="pill" href="#myListing" role="tab" aria-controls="myListing" aria-selected="false" onclick="profilenavlist(this)"><h6>My Listings</h6></a>
+                            <a class="pa" id="messages-tab" data-toggle="pill" href="#messages" role="tab" aria-controls="messages" aria-selected="false" onclick="profilenavlist(this)"><h6>All Notifications</h6></a>
+                        </a>
+                        <a class="nav-link hv">
+                            <img src="{% static 'img/profile/upload.png' %}"> My Orders <i class="fa fa-chevron-right arrow-icn"></i>
+
+                            <a class="pa" id="order-tab" data-toggle="pill" href="#order" role="tab" aria-controls="order" aria-selected="true" onclick="profilenavlist(this)"><h6>Active Orders</h6></a>
+                            <a class="pa" id="order-tab" data-toggle="pill" href="#order" role="tab" aria-controls="order" aria-selected="true" onclick="profilenavlist(this)"><h6>Cancel Orders</h6></a>
+                        </a>
+                        <a class="nav-link text-muted hv" href="#">
+                            <img src="{% static 'img/profile/logout.png' %}">Logout <i class="fa fa-chevron-right arrow-icn"></i>
+                        </a>
+                        <a class="nav-link hv border-bottom" id="deact-tab" data-toggle="pill" href="#deact" role="tab" aria-controls="deact" aria-selected="true" onclick="profilenavlist(this)">
+                            Deactivate Account
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-header-right ml-auto shadow" style="width: 73%;">
+                <div class="tab-content" id="tabContent">
+                    <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
+                        <div class="card order-block">
+                            <h5 class="mb-3">My Orders</h5>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="card p-0" href="#">
+                                        <div class="p-2 bg-light">
+                                            Id Generated :
+                                            <span class="bg-primary btn text-white ml-3" style="border-radius: 0px;">234543IDBGR00</span>
+                                        </div>
+                                        <div class="row" style="width: 98%; padding: 16px;">
+                                            <div class="col-md-2">
+                                                <img class="img-fluid" src="{% static 'img/profile/i1.jpg' %}">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Banner at Railway station</h5> <span>$ 339</span>
+                                                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <a class="card p-2" href="#">
+                                        <div class="row" style="width: 98%; padding: 16px;">
+                                            <div class="col-md-2">
+                                                <img class="img-fluid" src="{% static 'img/profile/b-6.jpg' %}">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Order one</h5> <span>$ 339</span>
+                                                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!-- Personal Information -->
+                    <div class="tab-pane fade show active p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card p-4" id="profile_block">
+                            <h6>Personal Information</h6>
+
+                            <div class="row details_bottom mt-2">
+                                <div class="col-md-6 border-right pr-4">
+                                    <div id="bank_details">
+                                        <div class="form-group row px-3">
+                                            <h6>Full Name: </h6>
+                                            <input type="text" class="form-control" id="profilename" placeholder="Enter full name" value="{{ request.session.user.name }}" required>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Email address: </h6>
+                                            <input type="email" class="form-control" id="profileemail" placeholder="Enter your e-mail" value="{{ request.session.user.email }}" required>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Contact: </h6>
+                                            <input type="number" class="form-control" id="profilecontact" placeholder="Enter phone number" value="{{ request.session.user.contact }}" required>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <button class="b b-ob col-md-6 b-sm" onclick="updateprofile(this,'{{ usertype }}')">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 pl-4">
+                                    <h6>Don't have a bank account in the name of your business?</h6>
+
+                                    <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    <h6>Don't have a verification document?</h6>
+
+                                    <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 mt-4" id="profile_block">
+                            <h6>Change Password</h6>
+
+                            <div class="row details_bottom mt-2">
+                                <div class="col-md-6 border-right pr-4">
+                                    <div id="bank_details">
+                                        <div class="form-group row px-3">
+                                            <h6>Old Password: </h6>
+                                            <input type="password" id="profileoldpass" class="form-control" placeholder="Enter old password">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>New Password: </h6>
+                                            <input type="password" id="profilenewpass" class="form-control" placeholder="Enter password">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>New Re-Password: </h6>
+                                            <input type="password" id="profilerenewpass"  class="form-control" placeholder="Enter re-password">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                       <button class="b b-ob col-md-6 b-sm"  onclick="updatepassword(this,'{{ usertype }}')">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 pl-4">
+                                    <h6>Don't have a bank account in the name of your business?</h6>
+
+                                    <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    <h6>Don't have a verification document?</h6>
+
+                                    <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade p-4" id="profile2" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card p-4" id="profile_block">
+                            <h6>Complete Information</h6>
+
+                            <div class="row details_bottom mt-2">
+                                <div class="col-md-6 border-right pr-4">
+                                    <div id="bank_details">
+                                        <div class="form-group row px-3">
+                                            <h6>City: </h6>
+                                            <select class="form-control" id="compinfocity">
+                                                <option value="">select city</option>
+                                                {% if request.session.user.city_id == '' %}
+                                                   {% for i,j in city.items %}
+                                                      <option value="{{ i }}">{{ j }}</option>
+                                                   {% endfor %}
+                                                {% else %}
+                                                     {% for i,j in city.items %}
+                                                        {% if request.session.user.city_id == i %}
+                                                           <option value="{{ i }}" selected>{{ j }}</option>
+                                                        {% else %}
+                                                            <option value="{{ i }}">{{ j }}</option>
+                                                        {% endif %}
+                                                     {% endfor %}
+                                                {% endif %}
+                                            </select>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Pan Card No: </h6>
+                                            <input type="text" id="compinfopancard" class="form-control" placeholder="Enter phone number" value="{{ request.session.user.pancard }}">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Full Address: </h6>
+                                            <textarea placeholder="Enter your description" value="" id="compinfoaddress" class="form-control">
+                                                {{ request.session.user.address }}
+                                            </textarea>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                       <button class="b b-ob col-md-6 b-sm" onclick="completeinfo(this,'{{ usertype }}')">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 pl-4">
+                                    <h6>Don't have a bank account in the name of your business?</h6>
+
+                                    <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    <h6>Don't have a verification document?</h6>
+
+                                    <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 mt-4">
+                                <h6>Store Details</h6>
+                                <p>Your store details will be displayed to the buyers when they browse your products:</p>
+
+                                <div class="row">
+                                    <div class="col-md-6 border-right pr-4">
+                                        <div>
+                                            <div class="form-group row px-3">
+                                                <h6 style="font-size: 15px;color: #69696e">Company Name: </h6>
+                                                <input id="companydetname" type="text" class="form-control" placeholder="Enter full name" value="{{ request.session.user.company }}">
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                            <div class="form-group row px-3">
+                                                <h6 style="font-size: 15px;color: #69696e">Description: </h6>
+                                                <textarea id="companydetdesc" type="text" class="form-control" placeholder="Enter your description" value="">
+                                                    {{ request.session.user.description }}
+                                                </textarea>
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                            <button class="b b-ob col-md-6 b-sm" onclick="updatecompanydet(this,'{{ usertype }}')">Save</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pl-4">
+                                        <p>Here is an example of how Store details will be displayed to the buyers :</p>
+
+                                        <div>
+                                            <img src="{% static 'img/car.jpg' %}" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="profile-tab3">
+                         <div class="seller-block p-4">
+                            <div class="card p-4">
+                                <h6>Business Details</h6>
+                                <div class="row mt-2">
+                                    <div class="col-md-6 border-right pr-4">
+                                        <div>
+                                            <h6 style="font-size: 15px;color: #69696e">GSTIN No: </h6>
+                                            <div class="row px-3" id="business_details">
+                                                <input type="text" placeholder="GSTIN Number" class="form-control col-md-9" id="gstinno">
+                                                <button type="button" class="btn btn-sm bg-white col-md-3" onclick="gstinnosave(this)">Verify</button>
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pl-4 details_bottom">
+                                        <h6>Need to update your business details?</h6>
+
+                                         <p>1) First 2 digits of the GST Number will represent State Code as per the Census.</p>
+
+                                        <p>2) Next 10 digits will be same as in the PAN number of the taxpayer.</p>
+
+                                        <p>3) The 13th digit will be the number of registration you take within a state i.e. after 9, A to Z is considered as 10 to 35.</p>
+
+                                        <p>4) 14th digit will be Z by default.</p>
+
+                                        <p>5) The last digit will be for check code.</p>
+
+                                        <p>6) All Character are Upper Case.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card p-4 mt-3">
+                                <h6>Signature</h6>
+
+                                <div class="row">
+                                    <div class="col-md-6 border-right pr-4">
+                                        <div id="bank_details">
+                                            <p>Please read the instructions and upload your document by clicking below:</p>
+                                            <button class="btn btn-primary btn-block">
+                                                <input type="file" accept="image/x-png,image/jpeg" id="imgInp" onchange="changeImg(this)">
+                                            </button>
+                                            <span class="validpspantag">Error</span>
+
+                                            <div class="mx-auto mt-4 col-md-8">
+                                                <img id="blah" src="#" width="200px" height="150px">
+                                            </div>
+                                            <button class="b b-ob col-md-6 b-sm text-center" onclick="signatureupload(this)">Upload</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pl-4 details_bottom">
+                                        <h6>Upload Instructions</h6>
+
+                                        <p>1) Make sure that the document is visibly large and on a white background.</p>
+
+                                        <p>2) Allowed files png, jpg.</p>
+
+                                        <p>3) Maximum img size should not exceed 5MB</p>
+
+                                        <p>4) Seal on the signature not a requirement.</p>
+
+                                        <div class="mt-2">
+                                            <p>Example:</p>
+                                            <img id="blah" src="{% static 'img/profile/example_img.png' %}" width="200px" height="150px" class="border">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card p-4 mt-3">
+                                <h6>Bank Details</h6>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-6 border-right pr-4">
+                                        <div id="bank_details">
+                                            <div class="form-group row px-3">
+                                                 <h6 style="font-size: 15px;color: #69696e">Bank Account Holder Name: </h6>
+                                                <input type="text" id="accname" placeholder="Enter account holder's name" class="form-control">
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                            <div class="form-group row px-3">
+                                                 <h6 style="font-size: 15px;color: #69696e">Bank Account No: </h6>
+                                                <input type="password" id="accno" placeholder="Bank account number" class="form-control">
+                                                <span class="validpspantag">Error</span>
+                                                <p>Please make sure the bank account is in the same name as the GSTIN</p>
+                                            </div>
+                                            <div class="form-group row px-3">
+                                                 <h6 style="font-size: 15px;color: #69696e">IFSC Code: </h6>
+                                                <input type="text" id="accifsc" placeholder="Ifsc code" class="form-control">
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                            <button class="b b-ob col-md-6 b-sm" type="button" onclick="bankdetail(this)">Save</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pl-4 details_bottom">
+                                        <h6>Don't have a bank account in the name of your business?</h6>
+
+                                        <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                        <h6>Don't have a verification document?</h6>
+
+                                        <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="attachnwp" role="tabpanel" aria-labelledby="profile-tab4">
+                         <div class="seller-block p-4">
+                            <div class="card p-4">
+                                <h6>Attach Newspaper</h6>
+                                <div class="row mt-2">
+                                    <div class="col-md-6 border-right pr-4">
+                                        <div>
+                                            <h6 style="font-size: 15px;color: #69696e">Newspaper Name: </h6>
+                                            <div class="row px-3" id="business_details">
+                                                <input type="text" placeholder="enter name" class="form-control col-md-9" id="attachnewspaper">
+                                                <button type="button" class="btn btn-sm bg-white col-md-3" onclick="attachnewspaper(this)">Add</button>
+                                                <span class="validpspantag">Add</span>
+                                            </div>
+                                            <div id="attachnwpnameshow" style="margin-top: 15px">
+                                              {% for i,j in newspapername.items %}
+                                                  <label class='ml-2' onclick="attachnwplabeltag(this,'{{ i }}')" style="border-radius: 20px;background-color: #f1f3f4;padding: 5px 15px;font-size: 15px">
+                                                    {{ j }}</label>
+                                              {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pl-4 details_bottom">
+                                        <h6>Need to Attach your own Newspapers?</h6>
+                                        <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                        <div class="stuff-block card p-4">
+                            <div class="pl-3">
+                                <h5>Notifications</h5>
+                            </div>
+                            <div class="p-3 stuff-list">
+                                <a class="row mx-auto" style="width: 102%;" href="#">
+                                    <div class="col-md-2">
+                                        <img class="img-fluid" src="{% static 'img/profile/i3.jpeg' %}">
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <h5>Order one</h5> <span>$ 339</span>
+                                        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                    </div>
+                                </a>
+
+                                <a class="row mx-auto" style="width: 102%;" href="#">
+                                    <div class="col-md-2">
+                                        <img class="img-fluid" src="{% static 'img/profile/b-6.jpg' %}">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Order one</h5> <span>$ 339</span>
+                                        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="deact" role="tabpanel" aria-labelledby="deact-tab">
+                        <div class="deactivate-block card p-4">
+                            <div class="">
+                                <p>Do you want to deativate your account</p>
+
+                                <a href="#" class="btn btn-primary">Deactivate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="myListing" role="tabpanel" aria-labelledby="myListing-tab">
+                           {% for key in vender_newspaper %}
+
+                               <div class="vender-block card px-4 py-2">
+                                    <div class="row">
+                                        {% if key.newspaper_type == 'lljBgC55cOWLX8i622EG' %}
+                                        <div class="col-md-12 mt-3">
+                                            <div class="card pb-3 vender-hover">
+                                                <div class="row">
+                                                    <div class="col-md-2 pl-5">
+                                                        <img id="v-img" src="{% static 'img/news/listing_nl-1.png' %}">
+                                                    </div>
+                                                    <div class="col-md-10 pt-3" id="v-body">
+                                                       <div class="row">
+                                                            <div class="col-md-7">
+                                                                {% for citynews in city_newspaper %}
+                                                                    {% if key.city_newspaper_id == citynews.id %}
+                                                                        {% for nname,value in newspaper_name.items %}
+                                                                            {% if nname == citynews.newspaper_name_id %}
+                                                                             <h4 class="text-muted my-2">{{ value }} Newspaper</h4>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            Newspaper Type :
+                                                                            <span class="text-muted">Classifeid Text</span>
+                                                                        </h6>
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            City :
+                                                                            {% for nname,value in city.items %}
+                                                                              {% if nname == citynews.city_id %}
+                                                                               <span class="text-muted ml-5">{{ value }}</span>
+                                                                              {% endif %}
+                                                                            {% endfor %}
+                                                                        </h6>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                            <div class="col-md-5 pt-2">
+                                                                <div class="row hover-buttons" style="margin-right: -20px;">
+                                                                    <button type="button" onclick="selectmodal(2,this,'{{ key.id }}')" class="col-md-4 mx-2 ml-5 orange-button py-1" style="border-radius: 5px;">
+                                                                        Update
+                                                                    </button>
+
+                                                                    <button onclick="newspaperdispalycartadd()" class="col-md-4 blue-button py-1" style="border-radius: 5px;">
+                                                                        Delete
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="card m-1 px-4 bg-light" style="border-radius: 30px;; padding-left: 12px; padding-right: 12px;">
+                                                                <h6 class="mt-1">Color - Price :</h6>
+                                                            </div>
+                                                            {% for color in key.color %}{% for price in key.color_price %}
+                                                                {% if forloop.counter == forloop.parentloop.counter %}
+
+                                                                    <div class="card m-1" style="background-color: #{{ color }};border-radius: 30px; padding-left: 12px; padding-right: 12px;">
+                                                                        {{ color }} - {{ price }}
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% endfor %}{% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% elif key.newspaper_type == 'MK0wmDijbelXkYN3U5wX' %}
+
+                                        <div class="col-md-12 mt-3">
+                                            <div class="card pb-3 vender-hover">
+                                                <div class="row">
+                                                    <div class="col-md-2 pl-5">
+                                                        <img id="v-img" src="{% static 'img/news/listing_nl-2.png' %}">
+                                                    </div>
+                                                    <div class="col-md-10 pt-3" id="v-body">
+                                                        <div class="row">
+                                                            <div class="col-md-7">
+                                                                {% for citynews in city_newspaper %}
+                                                                    {% if key.city_newspaper_id == citynews.id %}
+                                                                        {% for nname,value in newspapername.items %}
+                                                                            {% if nname == citynews.newspaper_name_id %}
+                                                                             <h4 class="text-muted my-2">{{ value }} Newspaper</h4>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            Newspaper Type :
+                                                                            <span class="text-muted">Newspaper Display</span>
+                                                                        </h6>
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            Ads Size :
+                                                                            <span class="text-muted">{{ key.ads_size_type }}</span>
+                                                                        </h6>
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            City :
+                                                                            {% for nname,value in city.items %}
+                                                                              {% if nname == citynews.city_id %}
+                                                                               <span class="text-muted ml-5">{{ value }}</span>
+                                                                              {% endif %}
+                                                                            {% endfor %}
+                                                                        </h6>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                            <div class="col-md-5 pt-2">
+                                                                <div class="row hover-buttons" style="margin-right: -20px;">
+                                                                    <button type="button" onclick="selectmodal(1,this,'{{ key.id }}')" class="col-md-4 mx-2 ml-5 orange-button py-1" style="border-radius: 5px;">
+                                                                        Update
+                                                                    </button>
+
+                                                                    <button onclick="newspaperdispalycartadd()" class="col-md-4 blue-button py-1" style="border-radius: 5px;">
+                                                                        Delete
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="card m-1 px-4 bg-light" style="border-radius: 30px;padding-left: 12px; padding-right: 12px;">
+                                                                <h6 class="mt-1">Page - Price :</h6>
+                                                            </div>
+                                                            {% for page in key.supplements %}{% for price in key.price %}
+                                                                {% if forloop.counter == forloop.parentloop.counter %}
+                                                                    <div class="card m-1" style="border-radius: 30px;padding: 0px 12px;padding-top: 2px;padding-bottom: 4px">
+                                                                        {{ page }} - {{ price }} Rs
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% endfor %}{% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% elif key.newspaper_type == 'ciNs49xCXeuI2d4TKHtY' %}
+                                        <div class="col-md-12 mt-3">
+                                            <div class="card pb-3 vender-hover">
+                                                <div class="row">
+                                                    <div class="col-md-2 pl-5">
+                                                        <img id="v-img" src="{% static 'img/news/listing_nl-3.png' %}">
+                                                    </div>
+                                                    <div class="col-md-10 pt-3" id="v-body">
+                                                        <div class="row">
+                                                            <div class="col-md-7">
+                                                                {% for citynews in city_newspaper %}
+                                                                    {% if key.city_newspaper_id == citynews.id %}
+                                                                        {% for nname,value in newspaper_name.items %}
+                                                                            {% if nname == citynews.newspaper_name_id %}
+                                                                                {{ nname.name }}
+                                                                             <h4 class="text-muted my-2">{{ value }} Newspaper</h4>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            Newspaper Type :
+                                                                            <span class="text-muted">Classified Display</span>
+                                                                        </h6>
+                                                                        <h6 class="text-primary my-2">
+                                                                            <i class="fa fa-map-marker"></i>
+                                                                            City :
+                                                                            {% for nname,value in city.items %}
+                                                                              {% if nname == citynews.city_id %}
+                                                                               <span class="text-muted ml-5">{{ value }}</span>
+                                                                              {% endif %}
+                                                                            {% endfor %}
+                                                                        </h6>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                            <div class="col-md-5 pt-2">
+                                                                <div class="row hover-buttons" style="margin-right: -20px;">
+                                                                    <button type="button" onclick="selectmodal(3,this,'{{ key.id }}')" class="col-md-4 mx-2 ml-5 orange-button py-1" style="border-radius: 5px;">
+                                                                        Update
+                                                                    </button>
+
+                                                                    <button onclick="newspaperdispalycartadd()" class="col-md-4 blue-button py-1" style="border-radius: 5px;">
+                                                                        Delete
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <h6 class="text-primary mb-2">
+                                                            <i class="fa fa-map-marker"></i>
+                                                            Color price : <span class="text-muted">{{ key.color_price }}</span>
+                                                        </h6>
+                                                        <h6 class="text-primary">
+                                                            <i class="fa fa-map-marker"></i>
+                                                            Black & White : <span class="text-muted">{{ key.black_white_price }}</span>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <button type="button" id='button_modal_bottom' class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: none">
+        Open modal
+    </button>
+
+    <!-- The Modal bottom code -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-full" id='modal_bottom'>
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="col-md-11 mx-auto d-flex flex-row align-items-center">
+                        <p class="lead mt-3">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                        <div class="ml-auto d-flex flex-row">
+                            <button class="b b-tp mx-2 px-3 my-4" onclick="attachnewspaperrename(this)">Rename</button>
+                            <button class="b b-tb mx-2 px-3 my-4" data-dismiss="modal" >No, Thanks</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

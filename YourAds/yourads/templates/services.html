@@ -1,0 +1,96 @@
+{% load static %}
+
+<style>
+    .service-rotate {
+        background-image: url('../static/img/services/rotate.png');
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        animation: rotate 5s infinite;
+    }
+    /* Standard syntax */
+    @keyframes rotate {
+      50% {transform: rotate(180deg);}
+    }
+    
+    .service-norotate {
+        background-image: url('../static/img/services/A.png');
+        width: 24px;
+        height: 24px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        animation: norotate 0s infinite;
+    }
+    /* Standard syntax */
+    @keyframes norotate {
+      50% {transform: rotatey(180deg);}
+    }
+</style>
+
+<!-- Start feature Area -->
+<div class="feature-area section-gap pb-5" id="service">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 pb-40 header-text mt-80 mb-50 ">
+                <h4 class="text-dark">What Services we offer</h4>
+                <p class="text-dark lead">Who are in extremely love with eco friendly system.</p>
+                <hr class="col-md-9 mx-auto bg-primary" style="height: 2px;">
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-feature">
+                    <div class="service-norotate bg-white">
+                        <div class="service-rotate"></div>
+                    </div>
+                    <h4>Expert Technicians</h4>
+                    <p>
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-feature">
+                    <h4><img src="{% static 'fonts/service/f-2.png' %}" width="24px" class="mr-2 mb-1">Professional Service</h4>
+                    <p>
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>								
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-feature">
+                    <h4><img src="{% static 'fonts/service/f-3.png' %}" width="24px" class="mr-2 mb-1">Great Support</h4>
+                    <p>
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>								
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-feature">
+                    <h4><img src="{% static 'fonts/service/f-4.png' %}" width="24px" class="mr-2 mb-1">Technical Skills</h4>
+                    <p>
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>				
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-feature">
+                    <h4><img src="{% static 'fonts/service/f-5.png' %}" width="24px" class="mr-2 mb-1">Highly Recomended</h4>
+                    <p>
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>								
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-feature">
+                    <h4><img src="{% static 'fonts/service/f-6.png' %}" width="24px" class="mr-2 mb-1">Positive Reviews</h4>
+                    <p>
+                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                    </p>									
+                </div>
+            </div>						
+        </div>
+    </div>	
+</div>
+<!-- End feature Area -->

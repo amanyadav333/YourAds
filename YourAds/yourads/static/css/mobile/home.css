@@ -1,0 +1,685 @@
+@media (min-width: 320px) and (max-width: 480.99px) {
+    /* ===========================
+    1. Navbar
+    ============================*/
+    .sidenav {
+        padding-top: 15px;
+        width: 0px;
+    }
+    #navbarSupportedContent {
+        display: none;
+    }
+    #full_search {
+        display: none;
+    }
+    .mobile_search {
+        display: none;
+    }
+    #hide_search {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    #display_search {
+        display: block;
+        margin-right: -54px;
+        color: #fe1d5d;
+        margin-top: 2px;
+    }
+    #display_search img {
+        width: 15px;
+        height: 15px;
+        margin-top: -3.5px;
+    }
+    .logo-img-1 {
+        width: 38px;
+    }
+    .logo-img-2 {
+        width: 58px;
+        margin-left: -8px;
+    }
+    .searchbar {
+        display: none;
+    }
+    .list-icon {
+        display: block;
+    }
+
+    /* ===========================
+    2. Home Carousel
+    ============================*/
+    #carousel_top {
+        display: block;
+    }
+    .home-top {
+        display: none;
+    }
+    #user_mobile_Indicators .carousel-inner img {
+        width: 100.01%;
+        height: 180px;
+    }
+    .s-top .app_screenshots_slides img {
+        width: 80px;
+        height: 40px;
+        margin-top: -3px;
+        margin-bottom: -3px;
+    }
+    #three-modals .card {
+        border: 0px;
+        cursor: pointer;
+        border-radius: 0px;
+        height: 80px;
+        background-color: #d1e7eb;
+    }
+    #three-modals .card img {
+        transition: transform .2s;
+        width: 110px;
+        height: 50px;
+    }
+    #three-modals .card:hover #three-modals .card img {
+        transform: scale(1.5);
+        width: 120px;
+    }
+    #three-modals .seemore {
+        font-size: 10px;
+        text-align: center;
+    }
+
+    /* =====================================
+    3. Info boxes
+    ===================================== */
+    .info {
+        display: none;
+    }
+
+    /* =====================================
+    4. interior_area
+    ======================================*/
+    .interior_area {
+        display: none;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        background: #fff;
+        overflow: hidden;
+        animation: bgColor 20s linear infinite;
+    }
+    .interior_area #interior-head {
+        display: none;
+    }
+    .interior_area #interior-body h4 {
+        font-size: 23px;
+        line-height: 28px;
+        font-weight: 600px;
+    }
+    .interior_area #interior-body p {
+        font-size: 14px;
+        margin-top: -20px;
+    }
+    .interior_area #interior-body img {
+        margin-top: 60px;
+    }
+
+    /*********************************
+    6. Feature area
+    *********************************/
+    #feature-area {
+        margin-top: -60px;
+    }
+    .feature-area {
+        background-color: #007bff;
+    }
+    #service .header-text h4 {
+        margin-top: -50px;
+    }
+    .single-feature {
+        padding: 10px;
+        height: 150px;
+        margin-bottom: 0px;
+        border-bottom: 1px solid #ddd;
+    }
+    #feature-area .single-feature h4 {
+        font-size: 14px;
+        margin-top: 5px;
+        font-weight: bold;
+        margin-bottom: 14px;
+    }
+    #feature-area .single-feature p {
+        font-size: 10px;
+        color: gray;
+    }
+    #feature-area .single-feature img {
+        display: none;
+    }
+
+    /* ======================================
+    7. Newspaper select
+    ====================================== */
+    #app_screenshots .news_text {
+        font-size: 18px;
+        color: #1d1f21;
+    }
+    .app-screenshots-area {
+        display: none;
+    }
+    .app_screenshots a:hover {
+        text-decoration: none;
+    }
+    .app_screenshots .single_shot img {
+        height: 145px;
+        width: 114px;
+        margin-bottom: 9px;
+    }
+    .app_screenshots .card {
+        border: 1px solid #ddd;
+        border-radius: 0px;
+    }
+    .app_screenshots .card h5 {
+        font-size: 13px;
+        color: black;
+        font-weight: bolder;
+        margin-top: 4px;
+    }
+    .app_screenshots .single_shot h5 {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .news_select {
+        display: none;
+    }
+
+    /* ======================================
+    7. Services Area
+    ====================================== */
+    .feature_area {
+        display: none;
+    }
+    #mobile_services {
+        display: block;
+    }
+
+    .feature_area_mobile {
+        background-image: url('../../static/img/profile/service/bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    #screenshot .header_text h6 {
+        font-size: 22px;
+    }
+    #screenshot .header_text p {
+        font-size: 14px;
+    }
+
+    .app_screenshots_slides .single_feature {
+        padding: 40px 18px;
+        box-shadow: 5px 5px 20px 0px #ddd;
+        margin-top: 35px;
+        background-color: #fff;
+    }
+
+    .app_screenshots_slides .single_feature h6 {
+        font-size: 22px;
+        color: #1d1f21;
+        margin-bottom: 20px;
+    }
+
+    .app_screenshots_slides .single_feature p {
+        font-size: 16px;
+    }
+    .app_screenshots_slides .feature_div {
+        width: 140px;
+        height: 140px;
+        background: #f8f9fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        padding: 65px 40px;
+    }
+    .app_screenshots_slides .feature_outdiv {
+        width: 0px;
+        height: 120px;
+        position: absolute;
+        margin-left: -36px;
+    }
+    .app_screenshots_slides .single_feature:hover .feature_outdiv {
+        -webkit-animation:spin 2s linear infinite;
+        -moz-animation:spin 2s linear infinite;
+        animation:spin 2s linear infinite;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+    .feature_inner_A {
+        width: 20px;
+        height: 60px;
+        margin-top: 8px;
+        position: relative;
+        left: 80px;
+    }
+
+    #mobile_footer {
+      display: block;
+    }
+
+    #full_footer {
+      display: none;
+    }
+
+/* =================== Margin - top ======*/
+
+    .mt10 {
+        margin-top: 2px;
+    }
+    .mt20 {
+        margin-top: 4px;
+    }
+    .mt30 {
+        margin-top: 6px;
+    }
+    .mt40 {
+        margin-top: 10px;
+    }
+    .mt50 {
+        margin-top: 20px;
+    }
+    .mt60 {
+        margin-top: 30px;
+    }
+    .mt70 {
+        margin-top: 40px;
+    }
+    .mt80 {
+        margin-top: 50px;
+    }
+    .mt90 {
+        margin-top: 60px;
+    }
+    .mt100 {
+        margin-top: 80px;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+/* ============================================================
+    Vender CSS
+============================================================ */
+}
+
+/* ===================== CSS for Tablets ================================================================= */
+
+@media (min-width: 481px) and (max-width: 767.99px) {
+    /* ===========================
+    1. Navbar
+    ============================*/
+    .sidenav {
+        padding-top: 15px;
+        width: 0px;
+    }
+    #navbarSupportedContent {
+        display: none;
+    }
+    #full_search {
+        display: none;
+    }
+    .mobile_search {
+        display: none;
+    }
+    #hide_search {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    #display_search {
+        display: block;
+        margin-right: -95px;
+        color: #fe1d5d;
+        margin-top: 2px;
+    }
+    #display_search img {
+        width: 15px;
+        height: 15px;
+        margin-top: -3.5px;
+    }
+    .logo-img-1 {
+        width: 38px;
+    }
+    .logo-img-2 {
+        width: 58px;
+        margin-left: -8px;
+    }
+    .searchbar {
+        display: none;
+    }
+    .list-icon {
+        display: block;
+    }
+    #home-top .carousel-inner img {
+        height: 220px;
+    }
+
+    /* =====================================
+    3. Info boxes
+    ===================================== */
+    .info {
+        display: none;
+    }
+
+    /* =====================================
+    4. interior_area
+    ======================================*/
+    .interior_area {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        height: 650px;
+        background: #fff;
+        overflow: hidden;
+        animation: bgColor 20s linear infinite;
+    }
+    .interior_area #interior-head {
+        display: none;
+    }
+    .interior_area #interior-body {
+        height: 100px;
+    }
+    .interior_area #interior-body h4 {
+        font-size: 23px;
+        line-height: 28px;
+        font-weight: 600px;
+    }
+    .interior_area #interior-body p {
+        font-size: 14px;
+        margin-top: -20px;
+    }
+    .interior_area #interior-body img {
+        margin-top: 60px;
+    }
+
+    /*********************************
+    6. Feature area
+    *********************************/
+    #feature-area {
+        margin-top: -60px;
+    }
+    .feature-area {
+        background-color: #007bff;
+    }
+    #service .header-text h4 {
+        margin-top: -50px;
+    }
+    .single-feature {
+        padding: 10px;
+        height: 150px;
+        margin-bottom: 0px;
+        border-bottom: 1px solid #ddd;
+    }
+    #feature-area .single-feature h4 {
+        font-size: 14px;
+        margin-top: 5px;
+        font-weight: bold;
+        margin-bottom: 14px;
+    }
+    #feature-area .single-feature p {
+        font-size: 10px;
+        color: gray;
+    }
+    #feature-area .single-feature img {
+        display: none;
+    }
+
+    /* ======================================
+    7. Newspaper select
+    ====================================== */
+    #app_screenshots .news_text {
+        font-size: 18px;
+        color: #1d1f21;
+    }
+    .app-screenshots-area {
+        display: none;
+    }
+    .app_screenshots a:hover {
+        text-decoration: none;
+    }
+    .app_screenshots .single_shot img {
+        height: 145px;
+        width: 114px;
+        margin-bottom: 9px;
+    }
+    .app_screenshots .card {
+        border: 1px solid #ddd;
+        border-radius: 0px;
+    }
+    .app_screenshots .card h5 {
+        font-size: 13px;
+        color: black;
+        font-weight: bolder;
+        margin-top: 4px;
+    }
+    .app_screenshots .single_shot h5 {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .news_select {
+        display: none;
+    }
+
+    /* ======================================
+    7. Services Area
+    ====================================== */
+    .feature_area {
+        display: none;
+    }
+    #mobile_services {
+        display: block;
+    }
+
+    .feature_area_mobile {
+        background-image: url('../../static/img/profile/service/bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    #screenshot .header_text h6 {
+        font-size: 22px;
+    }
+    #screenshot .header_text p {
+        font-size: 14px;
+    }
+
+    .app_screenshots_slides .single_feature {
+        padding: 40px 18px;
+        box-shadow: 5px 5px 20px 0px #ddd;
+        margin-top: 35px;
+        background-color: #fff;
+    }
+
+    .app_screenshots_slides .single_feature h6 {
+        font-size: 22px;
+        color: #1d1f21;
+        margin-bottom: 20px;
+    }
+
+    .app_screenshots_slides .single_feature p {
+        font-size: 16px;
+    }
+    .app_screenshots_slides .feature_div {
+        width: 140px;
+        height: 140px;
+        background: #f8f9fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        padding: 65px 40px;
+    }
+    .app_screenshots_slides .feature_outdiv {
+        width: 0px;
+        height: 120px;
+        position: absolute;
+        margin-left: -36px;
+    }
+    .app_screenshots_slides .single_feature:hover .feature_outdiv {
+        -webkit-animation:spin 2s linear infinite;
+        -moz-animation:spin 2s linear infinite;
+        animation:spin 2s linear infinite;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+    .feature_inner_A {
+        width: 20px;
+        height: 60px;
+        margin-top: 8px;
+        position: relative;
+        left: 80px;
+    }
+
+    #mobile_footer {
+      display: block;
+    }
+
+    #full_footer {
+      display: none;
+    }
+
+/* =================== Margin - top ======*/
+
+    .mt10 {
+        margin-top: 2px;
+    }
+    .mt20 {
+        margin-top: 4px;
+    }
+    .mt30 {
+        margin-top: 6px;
+    }
+    .mt40 {
+        margin-top: 10px;
+    }
+    .mt50 {
+        margin-top: 20px;
+    }
+    .mt60 {
+        margin-top: 30px;
+    }
+    .mt70 {
+        margin-top: 40px;
+    }
+    .mt80 {
+        margin-top: 50px;
+    }
+    .mt90 {
+        margin-top: 60px;
+    }
+    .mt100 {
+        margin-top: 80px;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+/* ============================================================
+    Vender CSS
+============================================================ */
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* ===========================
+    1. Navbar
+    ============================*/
+    .sidenav {
+        padding-top: 15px;
+        width: 0px;
+    }
+    #navbarSupportedContent {
+        display: none;
+    }
+    #full_search {
+        display: none;
+    }
+    .mobile_search {
+        display: none;
+    }
+    #hide_search {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+    #display_search {
+        display: block;
+        margin-right: -54px;
+        color: #fe1d5d;
+        margin-top: 2px;
+    }
+    #display_search img {
+        width: 15px;
+        height: 15px;
+        margin-top: -3.5px;
+    }
+    .logo-img-1 {
+        width: 38px;
+    }
+    .logo-img-2 {
+        width: 58px;
+        margin-left: -8px;
+    }
+    .searchbar {
+        display: none;
+    }
+    .list-icon {
+        display: block;
+    }
+    .search_input{
+        color: grey;
+        border: 0;
+        outline: 0;
+        background: none;
+        padding: 0 14px;
+        width: 240px;
+        line-height: 42px;
+    }
+    #home-top, #news_three_modal {
+        margin-top: -18px;
+    }
+    #home-top .carousel-inner img {
+        height: 264px;
+    }
+    #display_search {
+        margin-right: -29%;
+    }
+    
+    /* =====================================
+    3. Info boxes
+    ===================================== */
+    .info {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1300px) {
+    #select_newspaper {
+        display: none;
+    }
+    #mobile_services {
+        display: none;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+    #mobile_footer {
+      display: none;
+    }
+    .search_input{
+        width: 320px;;
+    }
+}

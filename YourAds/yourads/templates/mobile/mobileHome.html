@@ -1,0 +1,254 @@
+{% extends 'mobile/mobileBase.html' %} {% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css"/>
+
+<style>
+    .slick_slider_of_car img {
+        height: 210px;
+        width: 100%;
+    }
+
+    #slider_modal {
+        cursor: pointer;
+        position: relative;
+    }
+
+    #slider_modal img {
+        width: 48px;
+        height: 58px;
+    }
+
+    #slider_modal strong {
+        font-size: 13px;
+        color: #fe1d5d;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+    #slider_modal strong:hover {
+        color: #007bff;
+    }
+
+    #slider_modal p {
+        font-size: 12px;
+        line-height: 14px;
+        color: #1d1f21;
+        text-align: center;
+        font-weight: normal;
+        letter-spacing: 1px;
+    }
+
+    .chevron_prev {
+        position: absolute;
+        top: 6.6%;
+        bottom: 0;
+        left: 20px;
+        height: 25px;
+        width: 25px;
+        color: #111;
+        background-color: transparent;
+        text-align: center;
+        opacity: 0.5;
+    }
+    .chevron_next {
+        position: absolute;
+        top: 6.6%;
+        bottom: 0;
+        left: 90%;
+        height: 25px;
+        width: 25px;
+        color: #111;
+        background-color: transparent;
+        text-align: center;
+        opacity: 0.5;
+    }
+    .fa-chevron-left {
+        font-weight: 300;
+        border: 2px solid grey;
+        padding: 4px 5px 2px 4.4px;
+        border-radius: 50%;
+        font-size: 16px;
+    }
+    .fa-chevron-right {
+        font-weight: 300;
+        border: 2px solid grey;
+        padding: 3.4px 3.5px 2px 6px;
+        border-radius: 50%;
+        font-size: 16px;
+    }
+
+    #slider_modal .media-body {
+        margin-top: -60px;
+    }
+    #app_screenshots .app_screenshots .card {
+        border: 0.6px solid #eee;
+    }
+</style>
+
+<div class="slick_slider_of_car">
+    <div class="carousel_item active">
+        <img src="{% static 'img/carousel/car-11.jpg' %}" class="w-100">
+    </div>
+    <div class="carousel_item">
+        <img src="{% static 'img/carousel/car-6.jpg' %}" class="w-100">
+    </div>
+    <div class="carousel_item">
+        <img src="{% static 'img/carousel/car-12.jpg' %}" class="w-100">
+    </div>
+    <div class="carousel_item">
+        <img src="{% static 'img/carousel/car-10.jpg' %}" class="w-100">
+    </div>
+    <div class="carousel_item">
+        <img src="{% static 'img/carousel/car-9.jpg' %}" class="w-100">
+    </div>
+</div>
+<!-- ================= 3 - Modals start =================== -->
+
+<div class="mt-4 pt-1">
+    <div id="slider_modal" class="bg-light container">
+        <div class="media pt-3 pb-2" data-toggle="modal" data-target="#exampleModalVender">
+            <img src="{% static 'img/news/v1.png' %}" class="img-fluid" style="margin-left: 50px;">
+            <div class="media-body text-center w-75 ml-auto px-3">
+                <strong>News4aper Display Ad</strong><br>
+                <p>Classified advertisements cheaper advertisements</p>
+            </div>
+        </div>
+
+        <div class="media pt-3 pb-2" data-toggle="modal" data-target="#exampleModalVender">
+            <img src="{% static 'img/news/v2.png' %}" class="img-fluid" style="margin-left: 50px;">
+            <div class="media-body text-center w-75 ml-auto px-3">
+                <strong>Newspaper Text Ad</strong><br>
+                <p>Classified advertisements cheaper advertisements</p>
+            </div>
+        </div>
+
+        <div class="media pt-3 pb-2" data-toggle="modal" data-target="#exampleModalVender">
+            <img src="{% static 'img/news/v3.png' %}" class="img-fluid" style="margin-left: 50px;">
+            <div class="media-body text-center w-75 ml-auto px-3">
+                <strong>Classified Display Ad</strong><br>
+                <p>Classified advertisements cheaper advertisements</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slider_btn">
+    <div class="chevron_prev">
+        <span class="prev">
+            <i class="fa fa-chevron-left"></i>
+        </span>
+    </div>
+    <div class="chevron_next">
+        <span class="next">
+            <i class="fa fa-chevron-right"></i>
+        </span>
+    </div>
+</div>
+<!-- ================= 3 - Modals End ==================== -->
+
+<!-- Mobile select newspaper -->
+<div id="select_newspaper">
+    <div class="bg-light mb-5 py-3" id="app_screenshots">
+        <h6 class="m-3 news_text">
+            Select Newspaper</h6>
+        <div class="row mx-auto" style="width: 100.01%">
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-2.jpg' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">OBITUARY AD</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-1.png' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">CLASSIFIED AD</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-3.jpg' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">EDUCATION AD</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-4.png' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">MATRIMONIAL AD</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-5.jpg' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">Text</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-6.png' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">JOB & VACANCY</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-7.png' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">PROPERTY</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="app_screenshots col-6 col-md-4 p-0">
+                <a class="card single_shot mx-auto pt-3" href="#">
+                    <img src="{% static 'img/news/type/ap-8.png' %}" class="img-fluid mx-auto">
+                    <div class="">
+                        <h5 class="text-center lead text-muted">LOST & FOUND</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ****** Newspaper modal ****** -->
+    {% include 'mobile/news.html' %}
+<!-- ****** end ****************** -->
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
+
+<script type="text/javascript">
+    $('#slider_modal').slick({
+        dots: false,
+        infinite: true,
+        speed: 1500,
+        autoplay:true,
+        autoplaySpeed: 800,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow: ".slider_btn .prev",
+        nextArrow: ".slider_btn .next"
+    });
+    
+    $('.slick_slider_of_car').slick({
+        dots: false,
+        infinite: true,
+        speed: 4500,
+        autoplay:true,
+        autoplaySpeed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    });
+</script>
+
+{% endblock %}

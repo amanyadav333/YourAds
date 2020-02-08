@@ -1,0 +1,430 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css"/>
+
+<style>
+    #m1234 {
+        display: none;
+    }
+    .publish_front_page_ad_1 {
+        margin-top: -60px;
+    }
+    #editor_area {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    @media (min-width: 320px) and (max-width: 480.99px) {
+        #m1234 {
+            display: block;
+        }
+        .publish_front_page_ad_1 {
+            margin-top: -140px;
+        }
+        .publish_front_page_ad_1 .section-heading h1 {
+            font-size: 35px;
+            letter-spacing: 1.4px;
+        }
+        .publish_front_page_ad_1 .footer-text {
+            display: none;
+        }
+        .publish_front_page_ad_2 {
+            margin-top: -50px;
+        }
+        #editor_area {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #editor_area .heder-text h1 {
+            font-size: 35px;
+            text-shadow: 5px 5px 5px 5px #ddd;
+        }
+    }
+</style>
+
+{% include 'navbar.html' %}
+
+<!- ===========================================================
+    1. Carousel area
+=========================================================== -->
+ <div class="bg-light py-3 home-top" style="margin-top: 68px;">
+    <div class="row pl30" style="width: 101.01%;">
+        <div class="col-md-9 p-0 col-sm-9 col-12" id="home-top">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100 img-fluid" src="{% static 'img/carousel/car-7.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100 img-fluid" src="{% static 'img/carousel/car-7.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100 img-fluid" src="{% static 'img/carousel/car-7.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100 img-fluid" src="{% static 'img/carousel/car-8.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100 img-fluid" src="{% static 'img/carousel/car-11.jpg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="s-top container-fluid pl-5" style="background: #fe1d5d; padding-top: 30px; padding-bottom: 5px;">
+                <!-- App Screenshots Slides  -->
+                 <div id="slick_slide_one">
+                    <div>
+                        <img src="{% static 'img/logo/icon/1.png' %}" style="width: 90px;" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="{% static 'img/logo/icon/2.png' %}" style="width: 90px;" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="{% static 'img/logo/icon/3.png' %}" style="width: 90px;" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="{% static 'img/logo/icon/4.png' %}" style="width: 90px;" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="{% static 'img/logo/icon/5.png' %}" style="width: 90px;" class="img-fluid">
+                    </div>
+                    <div>
+                        <img src="{% static 'img/logo/icon/6.png' %}" style="width: 90px;" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto col-md-3 col-sm-3 col-12" id="news_three_modal">
+            <div class="row px-3">
+                <div class="card p-3 shadow c0 pointer col-md-12" data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u1','','')">
+                    <img class="mx-auto" src="{% static 'img/news/nl-1.png' %}">
+                    <div class="btn py-2 border">See More</div>
+                </div>
+                <div class="card p-3 shadow my-2 c pointer col-md-12" data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u2','','')">
+                    <img class="mx-auto" src="{% static 'img/news/nl-2.png' %}">
+                    <div class="btn py-2 border">See More</div>
+                </div>
+                <a href="{% url 'editor' %}">
+                  <div class="card p-3 shadow c0 pointer col-md-12">
+                      <img class="mx-auto" src="{% static 'img/news/nl-3.png' %}">
+                      <div class="btn py-2 border">See More</div>
+                  </div>
+                </a>
+            </div>
+
+
+            <!-- ****** Newspaper modal ****** -->
+                {% include 'newspaper.html' %}
+            <!-- ****** end ****************** -->
+       </div>
+    </div>
+</div>
+
+<section class="p-0">
+    <div id="m1234">
+        <div style="margin-top: 56px;">
+            {% include 'mobile/mobileHome.html' %}
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================
+    2. publish ads direct
+=========================================================== -->
+
+<section class="footer-contact-area clearfix bg-white mx-2" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 publish_front_page_ad_1">
+                <!-- Heading Text  -->
+                <div class="section-heading">
+                    <div id="hr_top"></div>
+                    <h1 style="text-shadow: 10px 8px #ddd;">Publish Ads in Front!</h1>
+                    <div class="line-shape"></div>
+                </div>
+                <div class="footer-text">
+                    <p>Publish your ads in front page of the Newspaper.</p>
+                </div>
+            </div>
+            <div class="col-md-6 shadow px-4 py-5 bg-white publish_front_page_ad_2">
+                <!-- Form Start-->
+                <div class="contact_from">
+                    <form action="#" method="post">
+                        <!-- Message Input Area Start -->
+                        <div class="contact_input_area">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label class="float-left text-muted">Select Location: </label>
+                                      <select name="city" id="ndispcity" class="form-control" onchange="Getcitynewsname(this)" style="background: #f3f5fe; border: 0;">
+                                          <option selected="true" disabled="disabled">Select City</option>
+                                          {% for i,j in newspaperdisplay_city.items %}
+                                                   <option value='{{ i }}' >{{ j }}</option>
+                                              {% endfor %}
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label class="float-left text-muted">
+                                          Select Newspaper: </label>
+                                      <select name="newspapername" id="ndispnewspapername" onchange="Getnewspaperpage(this)" class="form-control" style="background: #f3f5fe; border: 0;">
+                                          <option selected="true" disabled="disabled">Select Newspaper</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label class="float-left text-muted">Select Supplements: </label>
+                                      <select id="ndispsupplements" onchange="setprice(this)" class="form-control" style="background: #f3f5fe; border: 0;">
+                                          <option selected="true" disabled="disabled">Select Supplements</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="">Choose Image: </label>
+                                        <input class="p-2 my-2 w-100" type="file" id="ndispimg" name="newsimage" required placeholder="Select your Image">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                      <input type="text" placeholder="Publish Date" style="cursor: pointer;" class="form-control Txt_Date">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <button type="submit" class="b pink_btn">publish</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Message Input Area End -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================
+    3. Interior Area
+=========================================================== -->
+ <div class="bgPulse mx-2">
+    <div class="interior_area col-md-10 mx-auto">
+
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+
+        <div class="text-center mb-5 pb-4" id="interior-head">
+            <h1 class="font-weight-bold">GROWTH BUSSINESS WITH ADVERTISEMENT.</h1>
+            <p class="lead">Many a small things has been made large right kind of "ADVERTISEMENT"</p>
+        </div>
+        <div class="col-md-12 mx-auto" id="interior-body">
+            <div class="interior_inner row" style="width: 101.01%">
+                <div class="col-lg-8">
+                    <div class="interior_text">
+                        <h4>Newspaper Display Ads</h4>
+                        <p>Display Ads are displayed along with news or other sections of any newspaper.
+                          In this category Retail Advertising, Brand Advertising, Corporate Ads, Exhibition Ads, Product Launch, Promotional Ads, Discount Sale Ads can be published in any newspaper.
+                          Display advertisement has its own benefits and therefore has premium attached to it.
+                          Different rates are applicable for different pages for example Front Page, Back Page, Second Page, etc.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-fluid" src="{% static 'img/news/n-6.png' %}" alt="">
+                </div>
+            </div>
+            <div class="interior_inner row my-5" style="width: 101.01%">
+                <div class="col-lg-4">
+                    <img class="img-fluid" src="{% static 'img/news/n-6.png' %}" alt="">
+                </div>
+                <div class="col-lg-8">
+                    <div class="interior_text">
+                        <h4>Classified Text Ads</h4>
+                        <p>Most of the Newspapers have Classified Section which is meant for small ads. Classified Ads are popular for need based advertising.
+                          For example if you are looking to rent out a space or if you are looking to hire employees for your business or searching for a life partner then you can place
+                          advertisement in newspaper under classified section to get instant response. Classified Advertisements are generally low cost advertisement which are affordable for common man.
+                          Classified Ads in newspapers are placed under specific headings so that it becomes easy for a readers to find ads which they are interested in.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="interior_inner row" style="width: 101.01%">
+                <div class="col-lg-8">
+                    <div class="interior_text">
+                        <h4>Classified Display Ads</h4>
+                        <p>Classified Display Advertisement is an advanced form of classified ad.
+                          Unlike a regular newspaper classified advertisement you can design the ad as per your choice and requirements.
+                          Here you are allowed to design your advertisement using the fonts of your choice and styling.
+                          These are high visibility ads in classified pages. These ads can be booked in Colour or B&W along with images, logos etc to grab quick attention and better response.
+                          Generally Ads in Classified Display Category are accepted in single column format only.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <img class="img-fluid" src="{% static 'img/news/n-6.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================== End Interior Area ============================================ -->
+
+<!-- ==========================================================
+    4. Newspaper select Area Start
+=========================================================== -->
+
+<div class="bg-light s-middle news_select pt-3 pb-5">
+    <div class="section-heading">
+        <h4 class="text-center">Select Newspaper</h4>
+        <hr class="heading-hr col-md-2 col-8 mx-auto">
+    </div><br>
+    <div class="container mx-auto">
+        <!-- App Screenshots Slides  class="app_screenshots_slides owl-carousel"  -->
+       <div id="slick_select_newsapaper">
+            <div>
+                <div class="card single_shot mx-auto" href="{% url 'editor' %}">
+                    <img src="{% static 'img/news/type/ap-2.jpg' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">OBITUARY AD</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="#" data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u2','','')">
+                    <img src="{% static 'img/news/type/ap-1.png' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">CLASSIFIED Text AD</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="#"  data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u1','','')">
+                    <img src="{% static 'img/news/type/ap-3.jpg' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">EDUCATION AD</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="#" data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u2','','')">
+                    <img src="{% static 'img/news/type/ap-4.png' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">MATRIMONIAL AD</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="#" data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u1','','')">
+                    <img src="{% static 'img/news/type/ap-5.jpg' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">Front AD</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="{% url 'editor' %}">
+                    <img src="{% static 'img/news/type/ap-6.png' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">JOB & VACANCY</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="{% url 'editor' %}">
+                    <img src="{% static 'img/news/type/ap-7.png' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">PROPERTY</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card single_shot mx-auto" href="{% url 'editor' %}" data-toggle="modal" data-target="#fullModal" onclick="selectmodal('u2','','')">
+                    <img src="{% static 'img/news/type/ap-8.png' %}" class="img-fluid w-100">
+                    <div class="card-body p-2">
+                        <h5 class="text-center">LOST & FOUND</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ==========================================================
+    5. Editor Area
+=========================================================== -->
+<div class="editor_area" id="editor_area">
+   <div class="container">
+       <div class="row d-flex justify-content-center py-5">
+           <div class="col-md-8 header-text">
+               <h1 style="text-shadow: 10px 8px #ddd;color: #fe1d5d;">Ads Desginer Editor</h1>
+               <p class="lead">You can edit your design and can select layout from our design.</p>
+               <hr class="heading-hr col-md-9 col-6 mx-auto" style="height: 2px;">
+           </div>
+       </div>
+   </div>
+
+   {% include 'editor.html' %}
+</div>
+
+<div class="container mx-auto bg-light p-4 row my-5">
+    <div class="col-md-9 mt-1">
+        <h4>Attach your Nespaper with YourAds</h4>
+        <p class="mt-2">Know about more ways of partnering with YourAds & how each category can help you earn more.</p>
+    </div>
+    <div class="col-md-3 mb-4">
+        <button type="submit" class="b pink_btn">Join YourAds</button>
+    </div>
+</div>
+
+<div id="full_footer">
+    {% include 'footer.html' %}
+</div>
+
+<div id="mobile_footer">
+    {% include 'mobile/mobileFooter.html' %}
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
+
+<script type="text/javascript">
+    $('#slick_slide_one').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        autoplay:true,
+        autoplaySpeed: 2000,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: false,
+    });
+
+    $('#slick_select_newsapaper').slick({
+        dots: true,
+        centerMode: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay:true,
+        autoplaySpeed: 2000,
+        speed: 800,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 3
+            }
+        }, {
+            breakpoint: 480,
+            settings: {
+                arrows: false,
+                centerMode: true,
+                centerPadding: '40px',
+                slidesToShow: 1
+            }
+        }]
+    });
+</script>
+
+{% endblock %}

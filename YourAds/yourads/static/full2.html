@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            .modal-dialog {
+                top: calc(100% - 90px);
+            }
+            .modal-full {
+                min-width: 100%;
+                margin: 0px;
+            }
+            .modal-content {
+                box-shadow: 0px 0px 0px 0px;
+                border-radius: 0px;
+                margin: 0;
+            }
+            .b {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0px;
+                cursor: pointer;
+                height: 40px;
+                margin-top: 30px;
+                transition: 0.6s;
+            }
+            .b:hover {
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .b-tp {
+                background-color: #fe1d5d;
+                border: 1px solid #fe1d5d;
+                color: #fff;
+            }
+            .b-tp:hover {
+                background-color: transparent;
+                color: #fe1d5d;
+            }
+            
+            .b-tb {
+                background-color: #007bff;
+                border: 1px solid #007bff;
+                color: #fff;
+            }
+            .b-tb:hover {
+                background-color: transparent;
+                color: #007bff;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h2>Modal Example</h2>
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Open modal
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog modal-full">
+                    <div class="modal-content">
+        
+                        <!-- Modal body -->
+                        <div class="modal-body p-0">
+                            <div class="col-md-11 mx-auto d-flex flex-row align-items-center">
+                                <p class="lead mt-3">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                <div class="ml-auto d-flex flex-row">
+                                    <button class="b b-tp mx-2 px-3 my-4">Get it Now</button>
+                                    <button class="b b-tb mx-2 px-3 my-4">No, Thanks</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

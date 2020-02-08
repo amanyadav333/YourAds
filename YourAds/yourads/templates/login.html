@@ -1,0 +1,236 @@
+{% load static %}
+
+<style>
+    .modal-footer {
+        position: absolute;
+        background-color: #fff;
+        height: 60px;
+        width: 100%;
+        border-radius: 0px 0px 8px 8px;
+    }
+    .carousel_login .carousel-indicators {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 140px;
+        position: relative;
+        top: 10px;
+        border: 15px;
+    }
+    .carousel_login .carousel-indicators li {
+        width: 40px;
+        height: 10px;
+        background-color: #47484b;
+    }
+    .carousel_login .carousel-indicators .active {
+        background-color: #ddd;
+    }
+    
+    .register_form_ui form input {
+        padding: 22px 18px;
+        font-size: 15px;
+        color: gray;
+        transition: 0.6s linear;
+        border-radius: 5px;
+    }
+    .register_form_ui form input:focus {
+        border: 1px solid #007bff;
+    }
+    .register_form_ui form p {
+        font-size: 12px;
+        color: red;
+        display: none;
+    }
+    .register_form_ui form label {
+        color: gray;
+        font-size: 13px;
+        margin-bottom: 4px;
+    }
+    .register_form_ui form label i {
+        color: #fe1d5d;
+        font-size: 18px;
+    }
+    .register_form_ui form button {
+        background-color: #fe1d5d;
+        width: 100px;
+        color: #fff;
+        border: 0px;
+        border-radius: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    #login_options_ad div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+    #login_options_ad i {
+        font-size: 20px;
+    }
+</style>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog mx-auto" style="width: 400px;" role="document">
+        <div class="modal-content p-0" style="border-radius: 8px 8px 0px 0px;">
+            <div class="modal-body p-0">
+                <!-- otp section -->
+                <div id="userotpblock" class="register_form_ui" style="display: none">
+                    <div class="list-group-item p-4">
+                        <h6>Verify your Account</h6>
+                        <button type="button" class="close px-2 py-1" data-dismiss="modal" aria-label="Close" style="margin-top: -30px;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="#" class="p-3">
+                        <div class="form-group px-1">
+                            <label><i class="fa fa-user mr-2"></i>Full name:</label>
+                            <input type="number" id="otp" placeholder="Enter Otp" required="required" class="form-control">
+                            <p class="validptag">Error</p>
+                        </div>
+                        <button onclick="otpverify('{{ usertype }}',this)">Verify</button>
+                        <a id="resendotp" onclick="Resendotp('{{ usertype }}',this)">Resend Otp</a>
+                        <div>
+                            <a onclick="changeemail('{{ usertype }}')">Change your Email</a>
+                        </div>
+                    </form>
+                </div>
+                <!-- OTP end -->
+
+                <!-- SIgnUp section -->
+                <div id="demo" class="carousel slide carousel_login" data-ride="carousel" data-interval="false">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active register_form_ui">
+                            <div class="list-group-item p-4">
+                                <h6>Make an Register</h6>
+                                <button type="button" class="close px-2 py-1" data-dismiss="modal" aria-label="Close" style="margin-top: -30px;">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="#" class="mt-2 px-4 py-2">
+                                <div class="form-group px-1">
+                                    <label><i class="fa fa-user mr-2"></i>Full name:</label>
+                                    <input type="text" id="username" placeholder="Name" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                
+                                <div class="form-group px-1" style="margin-top: -8px;">
+                                    <label><i class="fa fa-envelope mr-2"></i>Email:</label>
+                                    <input type="email" id="useremail" placeholder="Email" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                
+                                <div class="form-group px-1" style="margin-top: -8px;">
+                                    <label><i class="fa fa-key mr-2"></i>Password:</label>
+                                    <input type="password" id="userpassword" placeholder="Password" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                
+                                <div class="form-group px-1" style="margin-top: -8px;">
+                                    <label><i class="fa fa-phone mr-2"></i>Phone number:</label>
+                                    <input type="number" id="usercontact" placeholder="Phone No" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" value="">I’m in for emails with exciting discounts and personalized recommendations
+                                    </label>
+                                </div>
+                                <button onclick="register('{{ usertype }}',this)">Signup</button>
+                                <a onclick="courselslide('left')">Sign in</a>
+                            </form>
+                        </div>
+
+                        <div class="carousel-item register_form_ui" style="height: 514px;">
+                            <div class="list-group-item py-4">
+                                <h6 class="modal-title">Make a login</h6>
+                                <button type="button" class="close px-2 py-1" data-dismiss="modal" aria-label="Close" style="margin-top: -30px;">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form action="#" class="p-3">
+                                <div class="form-group px-1">
+                                    <label><i class="fa fa-user mr-2"></i>Full name:</label>
+                                    <input type="email" id="userlogemail" placeholder="Email" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                
+                                <div class="form-group px-1">
+                                    <label><i class="fa fa-user mr-2"></i>Full name:</label>
+                                    <input type="password" id="userlogpassword" placeholder="Password" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                
+                                <div class="row mx-auto my-4" style="width: 99%;" id="login_options_ad">
+                                    <div class="mr-3 ml-4 bg-pink">
+                                        <a href="#" class="p-3">
+                                            <i class="fa fa-google text-white"></i>
+                                        </a>
+                                    </div>
+                                    <div class="mx-5 bg-pink">
+                                        <a href="#" class="p-3">
+                                            <i class="fa fa-facebook text-white"></i>
+                                        </a>
+                                    </div>
+                                    <div class="ml-3 bg-pink">
+                                        <a href="#" class="p-3">
+                                            <i class="fa fa-twitter text-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <button onclick="login('{{ usertype }}',this)">Login</button>
+<!--
+                                <a onclick="courselslide('right')">Sign up</a>
+                                <a onclick="courselslide('left')">Forget Password</a>
+-->
+                            </form>
+                            
+                            <div class="px-4 py-2 text-center">
+                                or <a onclick="courselslide('left')" href="#">Forget Password</a>
+                            </div>
+                            
+                            <div class="p-3 text-center">
+                                <a href="#" onclick="courselslide('right')">New to yourads Create an account</a>
+                            </div>
+                            
+                        </div>
+                        <div class="carousel-item register_form_ui" style="height: 514px;">
+                            <div class="list-group-item py-4">
+                                <h6 class="modal-title">Forget Password</h6>
+                                <button type="button" class="close px-2 py-1" data-dismiss="modal" aria-label="Close" style="margin-top: -30px;">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="#" class="p-3">
+                                <div class="form-group px-1">
+                                    <label><i class="fa fa-user mr-2"></i>Full name:</label>
+                                    <input type="text" id="forgetemail" placeholder="Enter Email" required="required" class="form-control">
+                                    <p class="validptag">Error</p>
+                                </div>
+                                <button onclick="foregetemailverify('{{ usertype }}',this)">Continue</button>
+                                <a onclick="courselslide('left')">Sign in</a>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <ol class="carousel-indicators mx-auto p-2">
+                            <li data-target="#demo" data-slide-to="0" class="active">Login</li>
+                            <li data-target="#demo" data-slide-to="1">Signup</li>
+                            <li data-target="#demo" data-slide-to="2">forgot</li>
+                        </ol>
+                    </div>
+
+                </div>
+                <!-- SIgnUp section end -->
+            </div>
+        </div>
+    </div>
+</div>

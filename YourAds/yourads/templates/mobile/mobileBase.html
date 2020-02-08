@@ -1,0 +1,89 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>Hello, world!</title>
+
+        <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico'%}"/>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mobile/home.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/carousel.css' %}">
+
+        <!-- Mobile css -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/mobile/home.css' %}">
+<!--        <link rel="stylesheet" type="text/css" href="{% static 'css/mobile/vender.css' %}">-->
+
+        <!--======= Footer CSS =======-->
+        <link rel="stylesheet" href="{% static 'css/foot/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/foot/font-awesome.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/foot/owl.carousel.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/foot/style.css' %}"/>
+
+
+    </head>
+    <body class="bg-light">
+
+
+
+    {% block content %} {% endblock %}
+
+
+
+
+    <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "42%";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+
+
+    </script>
+
+        <!-- multiple date selected -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+        <!-- end -->
+
+
+        <script src="{% static 'js/main.js'%}"></script>
+        <script src="{% static 'js/profile.js'%}"></script>
+
+        <!-- ======= Footer JS ======= -->
+        <!-- <script src="{% static 'js/foot/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/foot/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/foot/owl.carousel.min.js' %}"></script>
+
+        modal warniing
+ -->
+
+        <!-- ======= Carousel JS ======= -->
+        <script src="{% static 'js/carl/active.js' %}"></script>
+
+        <!-- ======= Online JS ======= -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>      modal warniing -->
+        <!-- Ajax  -->
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+    </body>
+</html>

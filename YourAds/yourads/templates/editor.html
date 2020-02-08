@@ -1,0 +1,212 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<!--======================================  editor  ========================================-->
+
+<link rel="stylesheet" href="{% static 'css/editor.css'%}">
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css"/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/editor/froala_editor.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/froala_style.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/code_view.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/draggable.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/colors.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/emoticons.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/image_manager.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/image.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/table.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/char_counter.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/quick_insert.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/help.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/third_party/spell_checker.css'%}">
+<link rel="stylesheet" href="{% static 'css/editor/plugins/special_characters.css'%}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+<!--===============================================================================================-->
+
+<div class="container editor-page">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <div class="row w-100">
+                <div class="px-4 col-md-6 col-12" style="float: right;">
+                    <div class="row">
+                        <h5 class="mr-4 mt-1">Select Layout Size</h5>
+
+                        <div class="form-check-inline">
+                            <label class="form-check-label" for="radio1">
+                                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="SingleSize" checked>Single Block:
+                            </label>
+                            <img class="ml-2" src="{% static 'img/news/single_block.png' %}" style="width: 30px;height: 40px">
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label" for="radio2">
+                                <input type="radio" class="form-check-input" id="radio2" name="optradio" value="DoubleSize">Double Block
+                            </label>
+                             <img class="ml-2" src="{% static 'img/news/double_block.png' %}" style="width: 60px;height: 40px">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </ol>
+    </nav>
+</div>
+
+<!-- ***** App Screenshots Area Start ***** -->
+
+<div class="clearfix" id="screenshot" style="margin-top: -80px;">
+    <div class="section-heading container mb-2">
+        <h4 class="text-secondary h3">Select Layout</h4>
+    </div>
+
+    <div class="s-top container" style="background: #fff; padding-top: 30px; padding-bottom: 5px;">
+        <!-- App Screenshots Slides  -->
+         <div id="slick_slide_layouts">
+            <div>
+                <img src="{% static 'img/news/type/ap-1.png' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+            <div>
+                <img src="{% static 'img/news/type/ap-2.jpg' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+            <div>
+                <img src="{% static 'img/news/type/ap-3.jpg' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+            <div>
+                <img src="{% static 'img/news/type/ap-4.png' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+            <div>
+                <img src="{% static 'img/news/type/ap-5.jpg' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+            <div>
+                <img src="{% static 'img/news/type/ap-6.png' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+             <div>
+                <img src="{% static 'img/news/type/ap-7.png' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+             <div>
+                <img src="{% static 'img/news/type/ap-8.png' %}" style="width: 150px; height: 200px;" class="img-fluid mx-auto">
+            </div>
+        </div>
+</div>
+
+</div>
+
+<div class="container mb-5">
+    <div class="row text-center">
+        <div style="margin-top: 30px;" class="mx-auto">
+            <div id='edit' style="border-radius: 0px;">
+              <table id="myCanvas" style="width: 100%;line-height: normal;display: none">
+                <tbody>
+                    <tr>
+                        <td style="width: 100%; background-color: rgb(226, 80, 65); border: 1px solid rgb(226, 80, 65);">
+
+                            <h4 style="text-align: center;"><span style='font-size: 24px; font-family: "Times New Roman", Times, serif, -webkit-standard; color: rgb(255, 255, 255);'>Prayer Meeting</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; background-color: rgb(255, 246, 177); border: 1px solid rgb(255, 246, 177);">
+                            <div style="text-align: center;"><span style="font-size: 24px;"><img src="/static/img/layouteditor/old.jpg" style="width: 178px;" class="fr-fic fr-dib fr-rounded fr-shadow"></span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; background-color: rgb(255, 246, 177); vertical-align: top; border: 1px solid rgb(255, 246, 177);">
+                            <div style="text-align: center;"><span style="font-size: 24px;"><strong><span style='font-family: "Times New Roman", Times, serif, -webkit-standard; color: rgb(226, 80, 65);'>Sir John Bravo</span></strong></span></div>
+                            <div style="text-align: center;"><span style="font-size: 18px;"><span style="font-family: Georgia, serif; color: rgb(0, 0, 0);">&nbsp;&nbsp;</span><span style="font-family: Georgia, serif; color: rgb(40, 50, 78);">passed away &nbsp;peacefully &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; on</span><span style="color: rgb(40, 50, 78);"><span style="font-family: Georgia, serif;">&nbsp;11-07-2018</span><span style='font-family: "Times New Roman", Times, serif, -webkit-standard;'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span><span style="font-family: Georgia, serif; color: rgb(40, 50, 78);">Uthala ceremony will be &nbsp; held on 13-07-2018 , from &nbsp;3 to 4 pm at Durga Colony , Ramesh Park , Delhi 110092</span></span></div>
+
+                            <p style="text-align: center;"><span style="font-size: 18px;"><span style="font-family: Georgia, serif; color: rgb(40, 50, 78);"><strong>Contact Us:</strong></span><span style='font-family: "Times New Roman", Times, serif, -webkit-standard; color: rgb(40, 50, 78);'>&nbsp; &nbsp;1234567890,71234567890</span><span style='font-family: "Times New Roman", Times, serif, -webkit-standard; color: rgb(0, 0, 0);'>&nbsp;</span></span></p>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+           </div>
+          <button type="submit" class="b pink_btn mt-4 mx-auto" style="width: 25%;">Download Pdf</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!--======================================  editor js  ========================================-->
+
+
+  <script type="text/javascript" src="{% static 'js/editor/froala_editor.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/align.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/char_counter.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/code_beautifier.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/code_view.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/colors.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/draggable.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/emoticons.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/entities.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/font_size.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/font_family.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/image.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/image_manager.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/line_breaker.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/inline_style.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/lists.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/paragraph_format.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/paragraph_style.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/quick_insert.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/quote.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/table.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/help.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/third_party/spell_checker.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/special_characters.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/editor/plugins/word_paste.min.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'js/editor/editor.js' %}"></script>
+
+
+<!--=======  pdf converter js  =========-->
+
+<script src="https://kendo.cdn.telerik.com/2017.2.621/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2017.2.621/js/jszip.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
+
+<script type="text/javascript">
+    $('#slick_slide_layouts').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        autoplay:true,
+        autoplaySpeed: 2000,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: false,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+              }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+          ]
+    });
+</script>

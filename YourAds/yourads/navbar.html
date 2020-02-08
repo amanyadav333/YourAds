@@ -1,0 +1,257 @@
+{% load static %}
+
+<style>
+    /* ===============================
+    1. Dropdown Caret
+    =============================== */
+    #dropdown-menu a:hover {
+        background-color: #f5faff;
+        font-weight: normal;
+    }
+    .dropdown:hover>.dropdown-menu {
+      display: block;
+    }
+
+    .dropdown>.dropdown-toggle:active {
+      /*Without this, clicking will make it sticky*/
+        pointer-events: none;
+    }
+
+    .dropdown-icon {
+        width: 30px;
+        height: 30px;
+        margin-top: -40px;
+    }
+
+    .caret-icon {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        -webkit-transition: -webkit-transform .1s ease-in-out;
+        transition: transform .1s ease-in-out;
+    }
+    .caret-btn:hover .caret-icon {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu-arrow {
+      top: -18px;
+      left: 15%;
+      width: 0;
+      height: 0;
+      position: relative;
+    }
+    .dropdown-menu-arrow:before,
+    .dropdown-menu-arrow:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 7px 9px;
+      border-style: solid;
+      border-color: transparent;
+      z-index: 1001;
+    }
+    .dropdown-menu-arrow:after {
+      bottom: -18px;
+      right: -8px;
+      border-bottom-color: #fff;
+    }
+    .dropdown-menu-arrow:before {
+      bottom: -17px;
+      right: -8px;
+      border-bottom-color: rgba(0,0,0,.15);
+    }
+    .list-icon {
+        width: 21px;
+        height: 21px;
+        display: none;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #32c69a;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 15px;
+        color: #111;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidenav img {
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+        margin-top: 9px;
+        margin-bottom: 13px;
+    }
+
+    .sidenav a:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+    
+    .closediv {
+        height: 42px;
+    }
+    
+    .sidenav .closebtn {
+        position: absolute;
+        margin-top: -18px;
+        right: 16px;
+        font-size: 30px;
+        margin-left: 50px;
+    }
+    @media (max-width: 470.98px) {
+        .list-icon {
+            display: block;
+        }
+        .sidenav {
+            padding-top: 15px;
+            width: 0px;
+        }
+        #navbarSupportedContent {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "300px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white col-12 col-md-12 shadow fixed-top">
+    <div class="container-fluid" style="margin-bottom: -5px;">
+        <a class="navbar-brand d-inline-block logo text-center" href="{% url 'index' %}">
+            <img src="{% static 'img/logo/main-logo1.png' %}" class="logo-img-1" id="logo-img-1">
+            <img src="{% static 'img/logo/main-logo2.png' %}" class="logo-img-2">
+        </a>
+        <form class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </form>
+        
+        <a style="margin-right: -65px;" href="#">
+            <i class="fas fa-search"></i>
+        </a>
+<!--
+        <form class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </form>
+        <a class="list-icon-show" href="#" onclick="openNav()">
+            <img src="{% static 'img/logo/icon/list-menu.png' %}" class="list-icon">
+        </a>
+-->
+        
+        <div id="mySidenav" class="sidenav">
+            <div class="w-100 shadow closediv mb-4">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background:#32c69a;">&times;</a>
+            </div>
+            <a class="" href="/" style="background-color: #007bff; color: #fff">
+                <img src="{% static 'img/logo/icon/home.png' %}"> Home
+            </a>
+            <a class="" href="/vender">
+                <img src="{% static 'img/logo/icon/navvender.png' %}"> Become Vendor
+            </a>
+            <a class="" href="#">
+                <img src="{% static 'img/logo/icon/navbell.png' %}"> Notifications
+            </a>
+            <a class="" href="{% url 'profile' %}">
+                <img src="{% static 'img/logo/icon/navuser.png' %}"> login
+            </a>
+            <span  style="position: absolute;right: 216px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 19px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+            <span id='setcart' style="position: absolute;right: 146px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 18px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+            <a href="/cart">
+                <img src="{% static 'img/logo/icon/cart.png'%}"> Cart
+            </a>
+            <div class="mr-auto dropdown mx-auto">
+                <a class="dropdown caret-btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <img src="{% static 'img/logo/icon/list.png' %}"> More <img src="static/img/logo/icon/caret.png" class="caret-icon">
+                </a>
+                <div class="dropdown-menu p-0 dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <span class="dropdown-menu-arrow1"></span>
+                    <a class="dropdown-item py-3" href="#">Action</a>
+                    <div class="dropdown-divider my-0"></div>
+                    <a class="dropdown-item py-3" href="#">Another action</a>
+                </div>
+            </div>
+        </div>
+        <div id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mt-2 mx-3 mx-auto">
+                    <a class="nav-link" href="/vender">
+                        Become Vendor
+                    </a>
+                </li>
+                <li class="nav-item mt-2 mx-2 dropdown btn mx-auto">
+                    <a class="dropdown caret-btn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More <img src="static/img/logo/icon/caret.png" class="caret-icon">
+                    </a>
+
+                    <div class="dropdown-menu p-0 mt-2" id="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <span class="dropdown-menu-arrow"></span>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Action</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Another action</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Something else</a>
+                    </div>
+                </li>
+                <li class="nav-item mt-2 mx-3">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">
+                        login
+                    </a>
+                </li>
+                <span  style="position: absolute;right: 216px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 19px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+                <span id='setcart' style="position: absolute;right: 146px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 18px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link mx-2" href="/cart" class="bell-card btn btn-default" onclick="openNav()">
+                        <img src="{% static 'img/logo/Cart.png'%}" width="43px" height="43px" >
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--
+
+<a class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</a>
+
+-->

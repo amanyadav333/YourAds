@@ -1,0 +1,161 @@
+{% load static %}
+
+<style>
+    /* --------------------------
+    :: 13.0 Contact Area CSS Start
+    -------------------------- */
+    
+    .footer-contact-area {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    
+    .section-heading h2 {
+        font-size: 50px;
+        color: #007bff;
+    }
+    
+    .line-shape {
+        width: 80px;
+        height: 2px;
+        background-color: #007bff;
+    }
+    
+    .contact_input_area input {
+        font-weight: 600;
+    }
+    
+    .contact_input_area textarea {
+        font-weight: 600;
+    }
+    
+    .address-text > p,
+    .phone-text > p,
+    .email-text > p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .address-text > p > span,
+    .phone-text > p > span,
+    .email-text > p > span {
+        color: #5b32b4;
+    }
+
+    .footer-contact-area .line-shape {
+        margin-left: 0;
+    }
+
+    .footer-contact-area .heading-text > p {
+        margin-top: 50px;
+    }
+
+    .footer-contact-area .heading-text {
+        margin-bottom: 50px;
+    }
+
+    #name {
+        font-size: 18px;
+        padding: 15px 15px;
+        border-radius: 25px 25px 25px 0;
+    }
+
+    #email {
+        font-size: 18px;
+        padding: 15px 15px;
+        border-radius: 25px 25px 25px 0;
+    }
+
+    #message {
+        border-radius: 25px 25px 25px 0;
+    }
+
+    .btn.submit-btn {
+        background-color: transparent;
+        border: 1px solid #32c69a;
+        height: 48px;
+        min-width: 185px;
+        color: #32c69a;
+        font-weight: 500;
+        border-radius: 22px 25px 22px 0;
+    }
+
+    .btn.submit-btn:hover {
+        background: #32c69a;
+        color: #fff;
+        -webkit-transition-duration: 500ms;
+        -o-transition-duration: 500ms;
+        transition-duration: 500ms;
+    }
+
+    .footer-contact-area {
+        background: #f5f9fc;
+    }
+
+    .footer-text > p {
+        margin-bottom: 50px;
+    }
+</style>
+
+<!-- ***** Contact Us Area Start ***** -->
+<section class="footer-contact-area section_padding_100 clearfix" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="margin-top: -80px;">
+                <!-- Heading Text  -->
+                <div class="section-heading">
+                    <h2>Get in touch with us!</h2>
+                    <div class="line-shape"></div>
+                </div>
+                <div class="footer-text">
+                    <p>We'll send you epic weekly blogs, whitepapers and things to make your app startup thrive, all FREE!</p>
+                </div>
+                <div class="address-text">
+                    <p><span>Address:</span> 40 Baria Sreet 133/2 NewYork City, US</p>
+                </div>
+                <div class="phone-text">
+                    <p><span>Phone:</span> +11-225-888-888-66</p>
+                </div>
+                <div class="email-text">
+                    <p><span>Email:</span> info.deercreative@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Form Start-->
+                <div class="contact_from">
+                    <form action="#" method="post">
+                        <!-- Message Input Area Start -->
+                        <div class="contact_input_area">
+                            <div class="row">
+                                <!-- Single Input Area Start -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control py-4 px-3" name="name" id="name" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                <!-- Single Input Area Start -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control py-4 px-3" name="email" id="email" placeholder="Your E-mail" required>
+                                    </div>
+                                </div>
+                                <!-- Single Input Area Start -->
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea name="message" class="form-control py-4 px-3" id="message" cols="30" rows="4" placeholder="Your Message *" required></textarea>
+                                    </div>
+                                </div>
+                                <!-- Single Input Area Start -->
+                                <div class="col-12">
+                                    <button type="submit" class="btn submit-btn">Send Now</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Message Input Area End -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Contact Us Area End ***** -->

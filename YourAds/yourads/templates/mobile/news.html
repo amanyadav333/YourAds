@@ -1,0 +1,314 @@
+{% load static %}
+
+<style>
+    #topModalMobile {
+        border-radius: 0px;
+    }
+    .modal-dialog {
+        top: calc(-7px);
+        right: calc(0px);
+        left: calc(0px);
+        border-radius: 0px;
+    }
+    .modal-full {
+        width: 99%;
+        margin: 0px;
+        border-radius: 0px;
+    }
+    #topModalMobile input, #topModalMobile select {
+        font-size: 13px;
+        height: 34px;
+    }
+</style>
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModalVender">
+    <div class="modal-dialog modal-sm modal-full" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-blue">
+                <h5 class="modal-title text-white" id="fullModalLabel">Modal title</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div  class="modal-body">
+                <div id="userdisplaymodel">
+                    <form id="newspaperdisplayform" name="form1" class="form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="float-left text-muted">Select Location: </label>
+                                <select name="city" id="city1" class="form-control" onchange="Getcitynewsname(this)">
+                                    <option selected="true" disabled="disabled">Select City</option>
+                                    {% for i,j in city.items %}
+                                             <option value='{{ i }}' >{{ j }}</option>
+                                        {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-md-12 mt-2">
+                                <label class="float-left text-muted">
+                                    Select Newspaper: </label>
+                                <select name="newspapername" id="newspaperselect" onchange="Getnewspaperpage(this)" class="form-control">
+                                    <option selected="true" disabled="disabled">Select Newspaper</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="border-top my-3"></div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="float-left text-muted">Select Supplements: </label>
+                                <select id="newspaperpageselect" onchange="setprice(this)" class="form-control">
+                                    <option selected="true" disabled="disabled">Select Supplements</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="mt-2">Choose Image: </label>
+                                <input type="file" id="imgInp" name="newsimage" required placeholder="Select your Image">
+                            </div>
+                        </div>
+
+                        <div class="border-top my-2"></div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="float-left text-muted">Ads Size: </label>
+                                <select name="adsize" class="form-control" onchange="adssize(this)" >
+                                    <option selected="true" value="quarter">Quarter Page</option>
+                                    <option value="half">Half Page</option>
+                                    <option value="full">Full Page</option>
+                                    <option value="custom">Custom Page</option>
+                                </select>
+                            </div>
+
+                           <div style="display: none;width: 100%" id="adscustom">
+                               <div class="row mt-3" style="float: left;margin-left: 35px; width: 45%;">
+                                <h5 class="col-md-3 text-muted h6 mt-2">WT: </h5>
+                                <select name="width" class="form-control" onchange="adssizewidth(this)" style="width: 50%;">
+                                    {% for nm in width %}
+                                       <option value='{{ nm }}' >{{ nm }}cm</option>
+                                    {% endfor %}
+                                </select>
+                                <span class="h4 ml-3 mt-1 pl-3">X</span>
+                            </div>
+
+                            <div class="row mt-3" style="float: right;margin-left: 20px; width: 45%;">
+                                <h5 class="col-md-3 text-muted h6 mt-2">HT: </h5>
+                                <select name="height" class="form-control" onchange="adssizeheight(this)" style="width: 50%;">
+                                    {% for nm in height %}
+                                       <option value='{{ nm }}' >{{ nm }}cm</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row text-center">
+                            <label class="col-md-3 col-3 mt-1 text-muted">Publish date: </label>
+                            <input type="date" name="publishdate" required class="form-control col-md-9 col-9">
+                        </div>
+
+                        <div class="border-bottom mt-3"></div>
+
+                        <div class="row px-4 my-3 hover-buttons">
+                            <button type="button" onclick="newspaperdispaly()" class="col-md-5 col-5 mx-2 btn btn-outline-success" style="border-radius: 0px">
+                                Submit
+                            </button>
+
+                            <button onclick="addcart()" class="col-md-6 col-6 btn btn-primary blue-button" style="border-radius: 0px">
+                                Add to cart
+                            </button>
+                        </div>
+                    </form>
+
+
+                    <div style="width: 100%">
+                        <div id="newspaperimageblock" class="mx-auto my-1 sport-img shadow" style="width: 70%; height: 350px; ">
+                            <img id="newspaperimageblock2" style="width: 50%;height: 50%; background-color: #0077b5;float: right;margin-top: 175px">
+                        </div>
+                        <div class="row mt-3 mb-2 px-3" style="width: 80%;margin-left: 30px">
+                            <div class="text-left" style="width: 60%">
+                                <p>Ex: 10cm x 10cm : <span id="pageprice">0 Rs</span></p>
+                            </div>
+                            <div class="text-left" style="width: 40%">
+                                <p>Price: <strong class="text-muted" id="pageprice2">100 Rs</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="usertextmodel" style="display: none">
+                    <div style="float: left;width: 40%">
+                         <form class="tab-pane fade show active" id="option1" role="tabpanel" aria-labelledby="home-tab">
+                             <div class="row text-center px-4">
+                                <label class="float-left text-muted">Select Location: </label>
+                                <select name="city" id="city2" class="form-control" onchange="Getcitynewsname(this)">
+                                    <option selected="true" disabled="disabled">Select City</option>
+                                    {% for i,j in city.items %}
+                                             <option value='{{ i }}' >{{ j }}</option>
+                                        {% endfor %}
+                                </select>
+                            </div>
+                             <div class="border-bottom my-2"></div>
+
+                             <div class="row text-center px-4">
+                                <label class="float-left text-muted">
+                                    Select Newspaper: </label>
+                                <select name="newspapername" id="newspaperselect2" onchange="Getnewspaperclasstext(this)" class="form-control">
+                                    <option selected="true" disabled="disabled">Select Newspaper</option>
+                                </select>
+                            </div>
+                             <div class="border-bottom my-2"></div>
+
+                             <div class="row text-center px-4">
+                                <label class="float-left text-muted">Classified Category: </label>
+                                <select name="category" class="form-control">
+                                     <option selected="true" disabled="disabled">Select</option>
+                                        {% for ct in classifiedtype %}
+                                           <option value='{{ ct.id }}' >{{ ct.name }}</option>
+                                        {% endfor %}
+                                </select>
+                            </div>
+                             <div class="border-bottom my-2"></div>
+
+
+                            <div class="row px-4">
+                                <div class="text-center px-2" style="width: 100%">
+                                    <label class="float-left text-muted">Select Color: </label><br>
+                                    <div class="row pl-2" style="width: 100%;">
+                                        <div class="form-check-inline mx-2" id="colorblock1">
+                                            <label class="form-check-label" for="red">
+                                                <input type="radio" id="colorradio1" class="form-check-input color-label mt-2" checked="checked" value="yellow" name="colors" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback1" style="background-color: #fff301;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline mx-2" id="colorblock2">
+                                            <label class="form-check-label" for="blue">
+                                                <input type="radio" id="colorradio2" class="form-check-input color-label mt-2" name="colors" value="pink" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback2" style="background-color: #fadeec"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline mx-2" id="colorblock3">
+                                            <label class="form-check-label" for="aqua">
+                                                <input type="radio" id="colorradio3" class="form-check-input color-label mt-2" name="colors" value="lightyellow" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback3" style="background-color: #fbf69a;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline mx-2" id="colorblock4">
+                                            <label class="form-check-label" for="green">
+                                                <input type="radio" id="colorradio4" class="form-check-input color-label mt-2" name="colors" value="white" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback4" style="background-color: white;border: 1px solid silver"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="border-bottom my-2"></div>
+
+
+                            <div class="row text-center px-4">
+                                <label class="float-left text-muted">Publish Dates: </label>
+                                <input type="date" name="publishDate" required class="form-control">
+                            </div>
+
+                            <div class="row px-2 my-3 hover-buttons">
+                                <button class="col-md-5 col-5 mx-2 btn btn-outline-success"> Submit </button>
+                                <button onclick="addcart()" class="col-md-6 col-6 btn btn-primary blue-button">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div style="float: right;width: 60%">
+                        <div class="p-1 px-2">
+                            <div class="mx-auto my-3 sport-img2 shadow" style="width: 95%; height: 400px; ">
+                                <textarea placeholder="TypeHere..." id="classtextarea" onkeyup="classword(this)" style='width: 145px;height: 230px;border: 1px solid black;margin-top: 90px;background-color: #fff301;padding: 5px;font-size: 13px;color: #666666;margin-left: 65px'></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-7 col-7" style="font-size: 14px;">
+                                    <span id="classcharacter">1</span>words: <span class="text-muted" id="classcharacter2">10 Rs</span> +
+                                    <span id="classcolor">Yellow (200 Rs)</span>
+                                </div>
+                                <div class="col-md-5 col-4" style="font-size: 14px;">
+                                    Price: <span id="classprice" class="text-muted">210</span> Rs
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="userdisplaymodel2" style="display: none">
+                    <div style="float: left;width: 60%">
+                         <form class="form">
+                            <div class="row px-2 pt-1">
+                                <div class="col-md-6 col-6">
+                                    <label class="float-left text-muted">Select Location: </label>
+                                    <select name="city" id="city3" class="form-control" onchange="Getcitynewsname(this)">
+                                        <option selected="true" disabled="disabled">Select City</option>
+                                        {% for i,j in city.items %}
+                                                 <option value='{{ i }}' >{{ j }}</option>
+                                            {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="float-left text-muted">
+                                        Select Newspaper: </label>
+                                    <select name="newspapername" id="newspaperselect" onchange="Getnewspaperpage(this)" class="form-control">
+                                        <option selected="true" disabled="disabled">Select Newspaper</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="row px-4">
+                                <div class="inputBox" style="width: 100%">
+                                    <label class="ml-3">Choose File: </label>
+                                    <input class="px-3 my-1" type="file" id="imgInp" name="newsimage" required placeholder="Select your Image">
+                                </div>
+                            </div>
+                            <div class="border-bottom my-2"></div>
+
+                            <div class="row text-center px-4">
+                                    <label class="float-left text-muted">Publish Dates: </label>
+                                    <input type="date" name="publishDate" required class="form-control">
+                            </div>
+                            <div class="border-bottom my-2"></div>
+
+                            <div class="row px-4 my-3 hover-buttons">
+                                <button class="col-md-5 col-5 mx-2 btn btn-outline-success"> Submit </button>
+
+                                <button onclick="addcart()" class="col-md-6 col-6 btn btn-primary blue-button">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div style="float: right;width: 40%">
+                        <div class="mx-auto my-3 sport-img3 shadow" style="width: 280px; height: 350px;">
+                            <img style='width: 92px;height: 180px;border: 1px solid black;margin-top: 5px;float: left;margin-left: 4px; background-color: #0077b5'>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-7 col-7" style="font-size: 14px;">
+                                <span id="classcharacter">1</span>words: <span class="text-muted" id="classcharacter2">10 Rs</span> +
+                                <span id="classcolor">Yellow (200 Rs)</span>
+                            </div>
+                            <div class="col-md-5 col-4" style="font-size: 14px;">
+                                Price: <span id="classprice" class="text-muted">210</span> Rs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

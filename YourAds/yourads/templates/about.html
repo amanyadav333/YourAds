@@ -1,0 +1,330 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<link type="text/css" rel="stylesheet" href="{% static 'css/timeline.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.css"/>
+
+<style>
+    
+</style>
+
+{% include 'navbar.html' %}
+
+<div class="" id="about_page">
+    
+    <!-- ==========================================================
+        1. Bg Area
+    =========================================================== -->
+    <div id="about_bg">
+        <div class="bgPulse">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="h1 text-white d-flex justify-content-center about_heading">About Us</p>
+    </div>
+    
+    <!-- ==========================================================
+        2. Content Area
+    =========================================================== -->
+    <div id="about_body" class="col-md-11 mx-auto">
+        <div class="row my-5">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex align-items-center justify-content-center">
+                <img src="{% static 'img/NewImages/i3.jpg' %}" class="img-fluid about_img">
+            </div>
+
+            <div class="col-lg-5 col-md-5 col-sm-5 col-12 d-flex align-items-center justify-content-center">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br><br> 
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br><br> 
+                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<br><br> 
+                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==========================================================
+        3. Display Area
+    =========================================================== -->
+    <div class="bg-light">
+        <div class="container">
+            <h4>Timeline Style : Demo-1</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-timeline">
+                        <a href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fa fa-globe"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Web Designer</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fa fa-rocket"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Web Developer</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fa fa-briefcase"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Web Designer</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fa fa-mobile"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Web Developer</h3>
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==========================================================
+        4. Team Area
+    =========================================================== -->
+    <div class="container" id="about_team_area">
+        <div class="col-md-6 mx-auto">
+            <div class="row mx-5">
+                <div class="about_round about_round_one">One</div>
+                <div class="about_round mx-5 about_round_two">two</div>
+                <div class="about_round about_round_three">three</div>
+            </div>
+            <img src="{% static 'img/logo/aboutusLogo.png' %}" id="about_img">
+            <div class="row mx-5">
+                <div class="about_round about_round_four">four</div>
+                <div class="about_round mx-5 about_round_five">five</div>
+                <div class="about_round about_round_six">six</div>
+            </div>
+        </div>        
+    </div>
+    
+    <!-- ==========================================================
+        5. Services Area
+    =========================================================== -->
+    <div class="feature_area py-5" id="service">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-dark py-5">
+                <div class="col-md-8 header-text">
+                    <h4>What Services we offer</h4>
+                    <p class="lead">Who are in extremely love with eco friendly system.</p>
+                    <hr class="col-md-9 col-6 mx-auto bg-info" style="height: 2px;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/A.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Newspaper Ads</h3>
+                        <p class="lead">
+                           Newspaper ads are generally used by businesses and corporations towards promotion of their goods and services.    
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/B.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Hording Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/C.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>BusStop Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/D.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Vehicle Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/E.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Digital Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/F.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Radio Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile services -->
+    <div id="mobile_services" class="bg-light">
+        <div class="clearfix py-5 feature_area_mobile" id="screenshot">
+            <div class="d-flex justify-content-center text-dark px-4">
+                <div class="col-md-8 header_text text-center">
+                    <h6>What Services we offer</h6>
+                    <p>Who are in extremely love with eco friendly system.</p>
+                    <hr class="col-md-9 col-6 mx-auto bg-info" style="height: 2px;">
+                </div>
+            </div>
+            <!-- App Screenshots Slides  -->
+            <div class="app_screenshots_slides pb-4">
+
+                <div class="px-2 py-3">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/A.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Newspaper Ads</h3>
+                        <p class="lead">
+                           Newspaper ads are generally used by businesses and corporations towards promotion of their goods and services.    
+                        </p>
+                    </div>
+                </div>
+
+                <div class="px-2 py-3">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/B.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Hording Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="px-2 py-3">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/C.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>BusStop Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="px-2 py-3">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/D.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Vehicle Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="px-2 py-3">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/E.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Digital Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="px-2 py-3">
+                    <div class="single_feature text-center">
+                        <div class="feature_div text-center mx-auto mb-5 mt-2">
+                            <img src="{% static 'img/profile/service/rotatee.png' %}" class="feature_outdiv">
+                            <img src="{% static 'img/profile/service/F.png' %}" class="feature_inner_A">
+                        </div>
+                        <h3>Radio Ads</h3>
+                        <p class="lead">
+                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div id="full_footer">
+    {% include 'footer.html' %}
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.11/slick.min.js"></script>
+
+<script type="text/javascript">
+    $('.app_screenshots_slides').slick({
+        dots: false,
+        infinite: true,
+        speed: 2000,
+        autoplay:true,
+        autoplaySpeed: 2000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow: ".slider_btn .prev",
+        nextArrow: ".slider_btn .next"
+    });
+</script>
+
+{% endblock %}

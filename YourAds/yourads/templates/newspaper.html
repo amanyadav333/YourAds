@@ -1,0 +1,364 @@
+{% load static %}
+
+<style>
+    .hover-buttons .blue-button {
+        background-color: #0077b5;
+        color: #fff;
+        border: 1px solid #0077b5;
+        border-radius: 0px;
+    }
+
+    .hover-buttons .blue-button:hover {
+        background-color: #fff;
+        color: #0077b5;
+    }
+
+    .hover-buttons .orange-button {
+        background-color: #fff;
+        color: #FF8A4F;
+        border: 1px solid #FF8A4F;
+        border-radius: 0px;
+    }
+
+    .hover-buttons .orange-button:hover {
+        background-color: #FF8A4F;
+        color: #fff;
+    }
+
+    .hover-buttons button {
+        border-radius: 0px;
+        transition: 0.8s;
+    }
+
+    .sport-img {
+        background-image: url("{% static 'img/educationTimes.png' %}");
+    }
+    .validptag{
+        display: none;
+    }
+</style>
+
+
+
+<!-- Modal -->
+ <button id="modalbutton2" style="display: none" data-toggle="modal" data-target="#fullModal"></button>
+ <div class="modal fade" id="fullModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-muted" id="exampleModalLabel">Modal title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div  class="modal-body">
+                <div id="userdisplaymodel">
+                    <div style="float: left;width: 60%">
+                        <form id="newspaperdisplayform" name="form1" class="form" action="{% url 'newspaperdisplaybook' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row px-2 pt-1">
+                                <div class="col-md-6 col-6">
+                                    <label class="float-left text-muted">Select Location: </label>
+                                    <select name="city" id="ndispcity" class="form-control" onchange="Getcitynewsname(this)">
+                                        <option selected="true" disabled="disabled">Select City</option>
+                                        {% for i,j in newspaperdisplay_city.items %}
+                                                 <option value='{{ i }}' >{{ j }}</option>
+                                            {% endfor %}
+                                    </select>
+                                    <p class="validptag" id="validuserdisplaycity">Error</p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="float-left text-muted">
+                                        Select Newspaper: </label>
+                                    <select name="newspapername" id="ndispnewspapername" onchange="Getnewspaperpage(this)" class="form-control">
+                                        <option selected="true" disabled="disabled">Select Newspaper</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row px-2">
+                                <div class="col-md-6" style="width: 50%">
+                                    <label class="float-left text-muted">Select Supplements: </label>
+                                    <select id="ndispsupplements" onchange="setprice(this)" class="form-control">
+                                        <option selected="true" disabled="disabled">Select Supplements</option>
+                                    </select>
+                                </div>
+                                <div class="inputBox" style="width: 50%">
+                                    <label class="ml-3">Choose Image: </label>
+                                    <input class="px-3 my-1" type="file" id="ndispimg" name="newsimage" required placeholder="Select your Image">
+                                </div>
+                            </div>
+
+                            <div class="border-top my-2"></div>
+
+                            <div class="row px-2">
+                                <div style="margin-left: 18px">
+                                    <label class="float-left text-muted">Ads Size: </label>
+                                    <select name="adsize" id="ndispsize" class="form-control" onchange="adssize(this)" >
+                                        <option selected="true" value="quarter">Quarter Size</option>
+                                        <option value="half">Half Size</option>
+                                        <option value="full">Full Size</option>
+                                        <option value="custom">Custom Size</option>
+                                    </select>
+                                </div>
+
+                                <div style="display: none;width: 100%" id="adscustom">
+                                    <div class="row mt-3" style="float: left;margin-left: 35px; width: 45%;">
+                                        <h5 class="col-md-3 text-muted h6 mt-2">WT: </h5>
+                                        <select name="width" id="ndispwidth2" class="form-control" onchange="adssizewidth(this)" style="width: 50%;">
+                                            {% for nm in width %}
+                                            <option value='{{ nm }}' >{{ nm }}cm</option>
+                                            {% endfor %}
+                                        </select>
+                                        <span class="h4 ml-3 mt-1 pl-3">X</span>
+                                    </div>
+
+                                    <div class="row mt-3" style="float: right;margin-left: 20px; width: 45%;">
+                                        <h5 class="col-md-3 text-muted h6 mt-2">HT: </h5>
+                                        <select name="height" id='ndispheight2' class="form-control" onchange="adssizeheight(this)" style="width: 50%;">
+                                            {% for nm in height %}
+                                            <option value='{{ nm }}' >{{ nm }}cm</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row text-center px-2 my-3">
+                                <label class="col-md-3 col-3 mt-1 text-muted">Publish date: </label>
+                                <input type="text" placeholder="Choose Date" style="cursor: pointer;" class="form-control col-md-9 col-9 Txt_Date">
+                            </div>
+
+                            <div class="border-bottom mt-3"></div>
+
+                            <div class="row px-4 my-3 hover-buttons">
+                                <button type="button" onclick="newspaperdispaly()" class="col-md-5 col-5 mx-2 orange-button py-2">
+                                    Submit
+                                </button>
+
+                                <button onclick="newspaperdispalycartadd()" class="col-md-6 col-6 blue-button py-2">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div style="float: right;width: 40%">
+                        <div id="newspaperimageblock" class="mx-auto sport-img shadow" style="width: 70%; height: 320px; ">
+                            <img id="newspaperimageblock2" style="width: 50%;height: 50%; background-color: #0077b5;float: right;margin-top: 160px">
+                        </div>
+                        <div class="row mt-3 mb-2 px-3" style="width: 80%;margin-left: 30px;font-size: 15px">
+                            <div class="text-left">
+                                <span>10cm X 10cm size price: </span><span id="pageprice">0 Rs</span>
+                            </div>
+                            <div class="text-left mt-1">
+                                <span id='adssizename'>Quarter Size</span> Price: <span id="pageprice2">0 Rs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="usertextmodel" style="display: none">
+                    <div style="float: left;width: 40%">
+                         <form class="tab-pane fade show active usertextmodel" id="option1" role="tabpanel" aria-labelledby="home-tab">
+                             <div class="row text-center px-4 usertextmodel">
+                                <label class="float-left text-muted">Select Location: </label>
+                                <select name="city" id="city2" class="form-control" onchange="Getcitynewsname(this)">
+                                    <option selected="true" disabled="disabled">Select City</option>
+                                    {% for i,j in classifiedtext_city.items %}
+                                    <option value='{{ i }}' >{{ j }}</option>
+                                    {% endfor %}
+                                </select>
+                             </div>
+                             <div class="border-bottom my-2"></div>
+
+                             <div class="row text-center px-4">
+                                <label class="float-left text-muted">
+                                    Select Newspaper: </label>
+                                <select name="newspapername" id="newspaperselect2" onchange="Getnewspaperclasstext(this)" class="form-control">
+                                    <option selected="true" disabled="disabled">Select Newspaper</option>
+                                </select>
+                             </div>
+                             <div class="border-bottom my-2"></div>
+
+                             <div class="row text-center px-4">
+                                 <label class="float-left text-muted">Classified Category: </label>
+                                 <select name="category" class="form-control">
+                                     <option selected="true" disabled="disabled">Select</option>
+                                     {% for ct in classifiedtype %}
+                                     <option value='{{ ct.id }}' >{{ ct.name }}</option>
+                                     {% endfor %}
+                                 </select>
+                             </div>
+                             <div class="border-bottom my-2"></div>
+
+
+                             <div class="row px-4">
+                                 <div class="text-center px-2" style="width: 100%">
+                                    <label class="float-left text-muted">Select Color: </label><br>
+                                    <div class="row pl-2" style="width: 100%;">
+                                        <div class="form-check-inline mx-2" id="colorblock1">
+                                            <label class="form-check-label" for="red">
+                                                <input type="radio" id="colorradio1" class="form-check-input color-label mt-2" checked="checked" value="yellow" name="colors" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback1" style="background-color: #fff301;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline mx-2" id="colorblock2">
+                                            <label class="form-check-label" for="blue">
+                                                <input type="radio" id="colorradio2" class="form-check-input color-label mt-2" name="colors" value="pink" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback2" style="background-color: #fadeec"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline mx-2" id="colorblock3">
+                                            <label class="form-check-label" for="aqua">
+                                                <input type="radio" id="colorradio3" class="form-check-input color-label mt-2" name="colors" value="lightyellow" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback3" style="background-color: #fbf69a;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline mx-2" id="colorblock4">
+                                            <label class="form-check-label" for="green">
+                                                <input type="radio" id="colorradio4" class="form-check-input color-label mt-2" name="colors" value="white" onclick="classifiedcolor(this)">
+                                                <div class="colors ml-3" id="colorback4" style="background-color: white;border: 1px solid silver"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                             <div class="border-bottom my-2"></div>
+                             <div class="row text-center px-4">
+                                 <label class="float-left text-muted">Publish Dates: </label>
+                                 <input type="date" name="publishDate" required class="form-control">
+                             </div>
+
+                             <div class="row px-4 my-3 hover-buttons">
+                                <button type="button" onclick="newspaperdispaly()" class="col-md-5 col-5 mx-2 orange-button py-2">
+                                    Submit
+                                </button>
+
+                                <button onclick="addcart()" class="col-md-6 col-6 blue-button py-2">
+                                    Add to cart
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div style="float: right;width: 60%">
+                        <div class="p-1 px-2">
+                            <div class="mx-auto my-3 sport-img2 shadow" style="width: 95%; height: 400px; ">
+                                <textarea placeholder="TypeHere..." id="classtextarea" onkeyup="classword(this)" style='width: 145px;height: 230px;border: 1px solid black;margin-top: 90px;background-color: #fff301;padding: 5px;font-size: 13px;color: #666666;margin-left: 175px'></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-7 col-7" style="font-size: 14px;">
+                                    <span id="classcharacter">1</span>words: <span class="text-muted" id="classcharacter2">10 Rs</span> +
+                                    <span id="classcolor">Yellow (200 Rs)</span>
+                                </div>
+                                <div class="col-md-5 col-4" style="font-size: 14px;">
+                                    Price: <span id="classprice" class="text-muted">210</span> Rs
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="userdisplaymodel2" style="display: none">
+              <div style="float: left;width: 60%">
+                  <form id="newspaperdisplayform" name="form1" class="form" action="{% url 'newspaperdisplaybook' %}" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="row px-2 pt-1">
+                          <div class="col-md-6 col-6">
+                              <label class="float-left text-muted">Select Location: </label>
+                              <select name="city" id="ndispcity" class="form-control" onchange="Getcitynewsname(this)">
+                                  <option selected="true" disabled="disabled">Select City</option>
+                                  {% for i,j in newspaperdisplay_city.items %}
+                                           <option value='{{ i }}' >{{ j }}</option>
+                                      {% endfor %}
+                              </select>
+                              <p class="validptag" id="validuserdisplaycity">Error</p>
+                          </div>
+
+                          <div class="col-md-6">
+                              <label class="float-left text-muted">
+                                  Select Newspaper: </label>
+                              <select name="newspapername" id="ndispnewspapername" onchange="Getnewspaperpage(this)" class="form-control">
+                                  <option selected="true" disabled="disabled">Select Newspaper</option>
+                              </select>
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="row px-2">
+                          <div class="col-md-6" style="width: 50%">
+                              <label class="float-left text-muted">Select Supplements: </label>
+                              <select id="ndispsupplements" onchange="setprice(this)" class="form-control">
+                                  <option selected="true" disabled="disabled">Select Supplements</option>
+                              </select>
+                          </div>
+                          <div class="inputBox" style="width: 50%">
+                              <label class="ml-3">Choose pdf: </label>
+                              <input class="px-3 my-1" type="file" id="ndispimg2" onchange="pdfview(this)" name="newsimage" required placeholder="Select your Image">
+                          </div>
+                      </div>
+
+                      <div class="border-top my-2"></div>
+
+                      <div class="row px-2">
+                        <div class='ml-2'>
+                            <label class="mt-2 px-2">Select Ads Size: </label>
+                            <div class="form-check-inline ml-4">
+                                <label class="form-check-label text-muted" for="radio1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="SingleSize" checked>Single Block:
+                                </label>
+                                <img class="ml-2" src="{% static 'img/news/single_block.png' %}" style="width: 30px;height: 40px">
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label text-muted" for="radio2">
+                                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="DoubleSize">Double Block
+                                </label>
+                                 <img class="ml-2" src="{% static 'img/news/double_block.png' %}" style="width: 60px;height: 40px">
+                            </div>
+                        </div>
+
+                        <div class='ml-2 mt-4'>
+                            <label class="px-2">Select Ad Color Type: </label>
+                            <div class="form-check-inline ml-4">
+                                <label class="form-check-label text-muted" for="radio1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="colorradio" value="SingleSize" checked>Color Ads
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label text-muted" for="radio2">
+                                    <input type="radio" class="form-check-input" id="radio2" name="colorradio" value="DoubleSize">Black/white Ads
+                                </label>
+                            </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row text-center px-2 my-3">
+                          <label class="col-md-3 col-3 mt-1 text-muted">Publish date: </label>
+                          <input type="text" placeholder="Choose Date" style="cursor: pointer;" class="form-control col-md-9 col-9 Txt_Date">
+                      </div>
+
+                      <div class="border-bottom mt-3"></div>
+
+                      <div class="row px-4 my-3 hover-buttons">
+                          <button type="button" onclick="newspaperdispaly()" class="col-md-5 col-5 mx-2 orange-button py-2">
+                              Submit
+                          </button>
+
+                          <button onclick="newspaperdispalycartadd()" class="col-md-6 col-6 blue-button py-2">
+                              Add to cart
+                          </button>
+                      </div>
+                  </form>
+              </div>
+
+              <div style="float: right;width: 40%">
+                  <iframe id='pdfviewsmall' src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="380px" width="100%"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

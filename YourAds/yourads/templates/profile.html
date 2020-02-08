@@ -1,0 +1,533 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+        
+<style>
+    .form-control {
+        border-radius: 0px;
+    }
+    .form-control:focus {
+        box-shadow: 0px 0px 1px 0px silver;
+    }
+
+    .profile-header-left img {
+        border: 1px solid #f0f0f0;
+        border-radius: 50%;
+        padding: 5px;
+        width: 48px;
+    }
+
+    .profile-header-left span {
+        font-size: 12px;
+    }
+    .profile-header-left {
+        border-radius: 0px;
+        padding: 12px;
+        border: 0px;
+    }
+    .profile-section-left {
+        border: 0px;
+        border-radius: 0px;
+    }
+
+    .profile-section-left .nav-link {
+        border-top: 1px solid #f0f0f0;
+        font-size: 15px;
+        padding: 16px;
+        font-weight: normal;
+        color: gray;
+    }
+    
+    .profile-section-left .nav-link img {
+        width: 20px;
+        margin-right: 10px;
+        margin-bottom: 4px;
+    }
+    
+    .hv:hover {
+        color: #2874f2;
+    }
+
+    .profile-section-left a .arrow-icn {
+        color: grey;
+        font-size: 16px;
+        margin-top: 3px;
+        float: right;
+    }
+
+    .profile-account li {
+        list-style: none;
+        margin-left: 30px;
+        background-color: aqua;
+        text-align: center;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+
+    .pa {
+        padding-left: 70px;
+        padding-top: 14px;
+        padding-bottom: 8px;
+        color: gray;
+        transition: 0.1s;
+    }
+
+    .pa:hover {
+        color: #2874f2;
+        text-decoration: none;
+        background-color: #f5faff;
+    }
+
+    .pa h6 {
+        font-size: 14px;
+    }
+
+    .color-g {
+        background-color: #f5faff;
+    }
+
+    .order-block {
+        border-radius: 0px;
+        padding: 22px;
+        border: 0px;
+    }
+
+    .order-block .card {
+        border: 1px solid #ddd;
+        border-radius: 0px;
+        margin-top: 30px;
+        padding: 10px;
+    }
+    .order-block .card:hover {
+        text-decoration: none;
+        box-shadow: 3px 3px 7px 0px silver;
+    }
+
+    .order-block .card p {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .order-block .card p {
+        font-size: 12px;
+        color: gray;
+    }
+
+    .profile-block {
+        padding: 35px;
+    }
+
+    .profile-block .form-control {
+        background: #fafafa;
+        padding: 10px 18px;
+    }
+
+    .stuff-block {
+        border-radius: 0px;
+        border: 0px;
+    }
+
+    .stuff-list a:hover {
+        text-decoration: none;
+        /*box-shadow: 1.5px 1.5px 5px 0px silver;*/
+        transition: 0.2s;
+        background-color: #f0f0f0;
+    }
+
+    .stuff-list a {
+        color: gray;
+        border-top: 1px solid #f0f0f0;
+        padding: 22px 13px;
+    }
+
+    .stuff-list a h5 {
+        color: #14171c;
+    }
+
+    .stuff-list a p {
+        font-size: 12px;
+    }
+
+    .deactivate-block {
+        border-radius: 0px;
+        border: 0px;
+        height: 400px;
+    }
+    .vender-block {
+        border-radius: 0px;
+        border: 0px;
+    }
+
+    #v-img {
+        margin-top: 30px;
+        width: 88%;
+    }
+
+    #v-body h5 {
+        font-size: 18px;
+    }
+    .vender-hover:hover {
+        box-shadow: 5px 5px 10px 2px #ddd;
+    }
+    /* ======================== Seller BLock ==============================*/
+    .seller-block textarea {
+        height: 150px;
+        font-size: 13px;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    .seller-block input {
+        height: 30px;
+        font-size: 13px;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    .seller-block p {
+        color: gray;
+        font-size: 14px;
+    }
+
+    #business_details input {
+        border-right: 0px;
+    }
+    #business_details input:focus {
+        box-shadow: 0px 0px 0px 0px #fff;
+    }
+
+    #business_details #verify {
+        border-radius: 0px;
+        border-left: 0px;
+        border: 1px solid #ddd;
+        height: 30px;
+    }
+
+    .details_bottom h6 {
+        font-size: 14px;
+        color: dimgray;
+    }
+    .details_bottom p {
+        font-size: 13px;
+        color: gray;
+    }
+    .details_bottom input {
+        font-size: 13px;
+        height: 30px;
+    }
+    #bank_details p {
+        font-size: 12px;
+        color: gray;
+    }
+    .validpspantag{
+        font-size: 14px;
+        color: red;
+        display: none;
+        margin-left: 10px;
+    }
+</style>
+
+{% include 'navbar.html' %}
+
+<div class="bg-light">
+    <div class="col-md-11 mx-auto" style="margin-top: 80px;">
+        <div class="row" style="padding-top: 20px;">
+            <div style="width: 25.5%;" class=" mr-auto">
+                <div class="card profile-header-left shadow">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="{% static 'img/profile/user-top.png' %}">
+                        </div>
+                        <div class="col-md-9">
+                            <span>Hello, Ankit</span>
+                            <h6>Ankit Jain</h6>
+                        </div>
+                    </div>
+                    <hr class="mx-0 my-2">
+                    <div class="pl-2">
+                        <p class="m-0" style="font-size: 14px"><i class="fa fa-user mr-2 text-primary"></i>Please complete your profile</p>
+                        <div class="progress m-0" style="width:90%;height:7px">
+                            <div class="progress-bar" style="width:30%;height:7px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card profile-section-left mt-3 bg-white shadow">
+                    <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link profile-account text-muted">
+                            <img src="{% static 'img/profile/profile.png' %}"> Account Settings
+
+                            <a class="pa color-g active" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profile" aria-selected="false" onclick="profilenavlist(this)"><h6>Profile Information</h6></a>
+                            <a class="pa" id="profile-tab2" data-toggle="pill" href="#profile2" role="tab" aria-controls="profile" aria-selected="false" onclick="profilenavlist(this)"><h6>Other Information</h6></a>
+                        </a>
+                        <a class="nav-link hv">
+                            <img src="{% static 'img/profile/upload.png' %}"> My Orders <i class="fa fa-chevron-right arrow-icn"></i>
+
+                            <a class="pa" id="order-tab" data-toggle="pill" href="#order" role="tab" aria-controls="order" aria-selected="true" onclick="profilenavlist(this)"><h6>Orders</h6></a>
+                        </a>
+                        <a class="nav-link text-muted">
+                            <img src="{% static 'img/profile/stuff.png' %}"> My Stuff <i class="fa fa-chevron-right arrow-icn"></i>
+                            <a class="pa" id="messages-tab" data-toggle="pill" href="#messages" role="tab" aria-controls="messages" aria-selected="false" onclick="profilenavlist(this)"><h6>All Notifications</h6></a>
+                        </a>
+                        <a class="nav-link text-muted hv" href="#">
+                            <img src="{% static 'img/profile/logout.png' %}">Logout <i class="fa fa-chevron-right arrow-icn"></i>
+                        </a>
+                        <a class="nav-link hv border-bottom" id="deact-tab" data-toggle="pill" href="#deact" role="tab" aria-controls="deact" aria-selected="true" onclick="profilenavlist(this)">
+                            Deactivate Account
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-header-right ml-auto shadow" style="width: 73%;">
+                <div class="tab-content" id="tabContent">
+                    <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
+                        <div class="card order-block">
+                            <h5 class="mb-3">My Orders</h5>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="card p-0" href="#">
+                                        <div class="p-2 bg-light">
+                                            Id Generated :
+                                            <span class="bg-primary btn text-white ml-3" style="border-radius: 0px;">234543IDBGR00</span>
+                                        </div>
+                                        <div class="row" style="width: 98%; padding: 16px;">
+                                            <div class="col-md-2">
+                                                <img class="img-fluid" src="{% static 'img/profile/i1.jpg' %}">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Banner at Railway station</h5> <span>$ 339</span>
+                                                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <a class="card p-2" href="#">
+                                        <div class="row" style="width: 98%; padding: 16px;">
+                                            <div class="col-md-2">
+                                                <img class="img-fluid" src="{% static 'img/profile/b-6.jpg' %}">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Order one</h5> <span>$ 339</span>
+                                                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!-- Personal Information -->
+                    <div class="tab-pane fade show active p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card p-4" id="profile_block">
+                            <h6>Personal Information</h6>
+
+                            <div class="row details_bottom mt-2">
+                                <div class="col-md-6 border-right pr-4">
+                                    <div id="bank_details">
+                                        <div class="form-group row px-3">
+                                            <h6>Full Name: </h6>
+                                            <input type="text" class="form-control" id="profilename" placeholder="Enter full name" value="{{ request.session.user.name }}" required>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Email address: </h6>
+                                            <input type="email" class="form-control" id="profileemail" placeholder="Enter your e-mail" value="{{ request.session.user.email }}" required>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Contact: </h6>
+                                            <input type="number" class="form-control" id="profilecontact" placeholder="Enter phone number" value="{{ request.session.user.contact }}" required>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <button class="b b-ob col-md-6 b-sm" onclick="updateprofile(this,'{{ usertype }}')">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 pl-4">
+                                    <h6>Don't have a bank account in the name of your business?</h6>
+
+                                    <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    <h6>Don't have a verification document?</h6>
+
+                                    <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 mt-4" id="profile_block">
+                            <h6>Change Password</h6>
+
+                            <div class="row details_bottom mt-2">
+                                <div class="col-md-6 border-right pr-4">
+                                    <div id="bank_details">
+                                        <div class="form-group row px-3">
+                                            <h6>Old Password: </h6>
+                                            <input type="password" id="profileoldpass" class="form-control" placeholder="Enter old password">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>New Password: </h6>
+                                            <input type="password" id="profilenewpass" class="form-control" placeholder="Enter password">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>New Re-Password: </h6>
+                                            <input type="password" id="profilerenewpass"  class="form-control" placeholder="Enter re-password">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                       <button class="b b-ob col-md-6 b-sm"  onclick="updatepassword(this,'{{ usertype }}')">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 pl-4">
+                                    <h6>Don't have a bank account in the name of your business?</h6>
+
+                                    <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    <h6>Don't have a verification document?</h6>
+
+                                    <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade p-4" id="profile2" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="card p-4" id="profile_block">
+                            <h6>Complete Information</h6>
+
+                            <div class="row details_bottom mt-2">
+                                <div class="col-md-6 border-right pr-4">
+                                    <div id="bank_details">
+                                        <div class="form-group row px-3">
+                                            <h6>City: </h6>
+                                            <select class="form-control" id="compinfocity">
+                                                <option value="">select city</option>
+                                                {% if request.session.user.city_id == '' %}
+                                                   {% for i,j in city.items %}
+                                                      <option value="{{ i }}">{{ j }}</option>
+                                                   {% endfor %}
+                                                {% else %}
+                                                     {% for i,j in city.items %}
+                                                        {% if request.session.user.city_id == i %}
+                                                           <option value="{{ i }}" selected>{{ j }}</option>
+                                                        {% else %}
+                                                            <option value="{{ i }}">{{ j }}</option>
+                                                        {% endif %}
+                                                     {% endfor %}
+                                                {% endif %}
+                                            </select>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Pan Card No: </h6>
+                                            <input type="text" id="compinfopancard" class="form-control" placeholder="Enter phone number" value="{{ request.session.user.pancard }}">
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                        <div class="form-group row px-3">
+                                            <h6>Full Address: </h6>
+                                            <textarea placeholder="Enter your description" value="" id="compinfoaddress" class="form-control">
+                                                {{ request.session.user.address }}
+                                            </textarea>
+                                            <span class="validpspantag">Error</span>
+                                        </div>
+                                       <button class="b b-ob col-md-6 b-sm" onclick="completeinfo(this,'{{ usertype }}')">Save</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 pl-4">
+                                    <h6>Don't have a bank account in the name of your business?</h6>
+
+                                    <p>We can only transfer payments to accounts which are in the registered business name. Please open a new bank account with any bank in your registered business name</p>
+
+                                    <h6>Don't have a verification document?</h6>
+
+                                    <p>You can get a cheque book, or the statement of your account from your bank. If neither of these are available, you can also ask the bank to issue a letter with your account number, IFSC code and name mentioned on it.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 mt-4">
+                                <h6>Store Details</h6>
+                                <p>Your store details will be displayed to the buyers when they browse your products:</p>
+
+                                <div class="row">
+                                    <div class="col-md-6 border-right pr-4">
+                                        <div>
+                                            <div class="form-group row px-3">
+                                                <h6 style="font-size: 15px;color: #69696e">Company Name: </h6>
+                                                <input id="companydetname" type="text" class="form-control" placeholder="Enter full name" value="{{ request.session.user.company }}">
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                            <div class="form-group row px-3">
+                                                <h6 style="font-size: 15px;color: #69696e">Description: </h6>
+                                                <textarea id="companydetdesc" type="text" class="form-control" placeholder="Enter your description" value="">
+                                                    {{ request.session.user.description }}
+                                                </textarea>
+                                                <span class="validpspantag">Error</span>
+                                            </div>
+                                            <button class="b b-ob col-md-6 b-sm" onclick="updatecompanydet(this,'{{ usertype }}')">Save</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pl-4">
+                                        <p>Here is an example of how Store details will be displayed to the buyers :</p>
+
+                                        <div>
+                                            <img src="{% static 'img/car.jpg' %}" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                        <div class="stuff-block card p-4">
+                            <div class="pl-3">
+                                <h5>Notifications</h5>
+                            </div>
+                            <div class="p-3 stuff-list">
+                                <a class="row mx-auto" style="width: 102%;" href="#">
+                                    <div class="col-md-2">
+                                        <img class="img-fluid" src="{% static 'img/profile/i3.jpeg' %}">
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <h5>Order one</h5> <span>$ 339</span>
+                                        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                    </div>
+                                </a>
+
+                                <a class="row mx-auto" style="width: 102%;" href="#">
+                                    <div class="col-md-2">
+                                        <img class="img-fluid" src="{% static 'img/profile/b-6.jpg' %}">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Order one</h5> <span>$ 339</span>
+                                        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="deact" role="tabpanel" aria-labelledby="deact-tab">
+                        <div class="deactivate-block card p-4">
+                            <div class="">
+                                <p>Do you want to deativate your account</p>
+
+                                <a href="#" class="btn btn-primary">Deactivate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+{% endblock %}

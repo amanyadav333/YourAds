@@ -1,0 +1,180 @@
+{% load static %}
+
+<style>
+    .navbar_search {
+        display: none;
+    }
+    
+    .navbar_menu {
+        display: none;
+    }
+    .navbar {
+        padding: 0;
+    }
+    
+    #navbarSupportedContent .nav-item .nav-link {
+        color: grey;
+        font-size: 16.4px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        margin-top: 10px;
+    }
+    #navbarSupportedContent .nav-item .nav-link:hover {
+        color: #fe1d5d;
+        transition: 0.2s;
+    }
+    @media (min-width: 320px) and (max-width: 480.99px) {
+        .navbar {
+            padding-top: 25rem;
+            padding-bottom: 25rem;
+        }
+        .navbar_search {
+            display: block;
+        }
+
+        .navbar_menu {
+            display: block;
+        }
+        
+        #logo-img-1 {
+            width: 34px;
+        }
+        #logo-img-2 {
+            width: 62px;
+            margin-left: -8px;
+        }
+    }
+    @media (min-width: 481px) and (max-width: 767.99px) {
+        .navbar_search {
+            display: block;
+        }
+
+        .navbar_menu {
+            display: block;
+        }
+        
+        #logo-img-1 {
+            width: 38px;
+        }
+        #logo-img-2 {
+            width: 58px;
+            margin-left: -8px;
+        }
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg_nav col-12 col-md-12 shadow fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand d-inline-block logo text-center" href="{% url 'Index' %}">
+            <img src="{% static 'img/logo/main-logo1.png' %}" class="logo-img-1" id="logo-img-1">
+            <img src="{% static 'img/logo/main-logo2.png' %}" class="logo-img-2" id="logo-img-2">
+        </a>
+        <form class="d-flex justify-content-center" id="full_search">
+            <div class="d-flex justify-content-center">
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </form>
+
+
+        <a href="#" class="navbar_search" onclick="show_search()">
+            <img src="{% static 'img/logo/icon/search.png' %}" width="18px" height="18px">
+        </a>
+
+        <a href="#" class="navbar_menu mr-3" onclick="openNav()">
+            <img src="{% static 'img/logo/icon/list-menu.png' %}" width="22px" height="22px">
+        </a>
+
+        <div id="mySidenav" class="sidenav">
+            <div class="w-100 closediv" style="margin-top: -55px;">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="background:#fff;">&times;</a>
+            </div>
+            <a href="/" class="py-1">
+                <i class="fa fa-home"></i> Home
+            </a>
+            <a href="/vender" class="py-1">
+                <i class="fas fa-user"></i> Join YourAds
+            </a>
+            <a href="#" class="py-1">
+                <i class="fas fa-bell"></i> Notifications
+            </a>
+            <a href="{% url 'uprofile' %}" class="py-1">
+                <i class="fas fa-lock"></i> login
+            </a>
+            <span  style="position: absolute;right: 216px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 19px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+            <span id='setcart' style="position: absolute;right: 146px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 18px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+            <a href="/cart" class="py-1">
+                <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+            <a href="#" class="py-1">
+                <i class="fas fa-asterisk"></i> Terms & Conditions
+            </a>
+            <a href="#" class="py-1">
+                <i class="fa fa-home"></i> Cart
+            </a>
+            <a href="#" class="py-1">
+                <i class="fa fa-home"></i> Cart
+            </a>
+            
+        </div>
+        <div id="navbarSupportedContent" class="pr-5">
+            <ul class="row ml-auto pl-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="/vender">
+                        Join YourAds
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="dropdown caret-btn nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/more">
+                        More <img src="static/img/logo/icon/caret.png" class="caret-icon">
+                    </a>
+
+                    <div class="dropdown-menu p-0 mt-2" id="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <span class="dropdown-menu-arrow"></span>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Action</a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a class="dropdown-item py-3 mr-5" href="#"><img src="{% static 'img/logo/icon/home.png' %}" style="width: 15px; background: #ddd; margin-right: 15px;">Another action</a>
+                        <div class="dropdown-divider my-0"></div>
+                    </div>
+                </li>
+                <span  style="position: absolute;right: 216px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 19px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+                <span id='setcart' style="position: absolute;right: 146px;background-color: #ff8a4f;color: white;border-radius: 25px;padding: 0px 4px;font-size: 11px;top: 18px;font-family: sans-serif;font-weight: 0px" class="d-none">0</span>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#myModal" href="#login_register">
+                        login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart"> Cart </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mobile_search col-md-12 mt-2 p-0" id="mobile_search">
+        <form id="">
+            <span class="dropdown-menu-arrow1"></span>
+            <input type="text" name="" placeholder="Search..." id="hide_search">
+        </form>
+    </div>
+</nav>
+{% include 'login.html' %}
+<script>
+    function show_search() {
+        var disp = document.getElementById('mobile_search');
+        if (disp.style.display === "none") {
+            disp.style.display = "block";
+        } else {
+            disp.style.display = "none";
+        }
+    }
+
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "120px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
